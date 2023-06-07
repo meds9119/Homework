@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Задача 4</h1>
+    <p>
+        З клавіатури вводяться вартість товару та кількість одиниць 3 товарів. Обчислити вартість кожного товару окремо та загальну вартість. Вивести чек (як у супермаркеті) використовуючи елементи розмітки.
+    </p>
+
+    <script>
+        //Вводимо необхідні дані
+        let priceProduct = parseFloat(prompt('Введіть вартість одиниці товару', '0'))
+        let numberProduct = parseFloat(prompt('Введіть кількість товару', '0'))
+        
+        //Знаходимо результат
+        let totalPriceProduct = priceProduct * numberProduct
+        let taxProduct = totalPriceProduct / 100*5
+       
+        //Виводимо результат
+        document.write(`
+        <table border="2px">
+            <tr>
+                <th>Загальна вартість товару</th>
+                <td>${totalPriceProduct}</td>
+            </tr>
+              <tr>
+                <th>ПДВ 5% від загальної вартості товару</th>
+                <td>${taxProduct}</td>
+              </tr>
+             </table>
+        `)
+    </script>
+
+</body>
+</html>
