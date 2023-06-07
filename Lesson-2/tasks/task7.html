@@ -7,30 +7,37 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Задача 4</h1>
+    <h1>Задача 7</h1>
     <p>
-        З клавіатури вводяться вартість товару та кількість одиниць 3 товарів. Обчислити вартість кожного товару окремо та загальну вартість. Вивести чек (як у супермаркеті) використовуючи елементи розмітки.
+        Знайти суму випадкового номера місяця (від 1 до 12) та випадкового номера дня (від 0 до 6).
     </p>
 
     <script>
         //Вводимо необхідні дані
-        let priceProduct = parseFloat(prompt('Введіть вартість одиниці товару', '0'))
-        let numberProduct = parseFloat(prompt('Введіть кількість товару', '0'))
+        let minMonth = 1, maxMonth = 12
+        let minDate = 0, maxDate = 6
+
         
         //Знаходимо результат
-        let totalPriceProduct = priceProduct * numberProduct
-        let taxProduct = totalPriceProduct / 100*5
+        let randomMonth = minMonth + Math.floor(Math.random() * (maxMonth-minMonth + 1))
+        let randomDate = minDate + Math.floor(Math.random() * (maxDate-minDate + 1))
+        let sum = randomDate + randomMonth
+        
        
         //Виводимо результат
         document.write(`
         <table border="2px">
             <tr>
-                <th>Загальна вартість товару</th>
-                <td>${totalPriceProduct}</td>
+                <th>Випадковий номер місяця</th>
+                <td>${randomMonth}</td>
             </tr>
               <tr>
-                <th>ПДВ 5% від загальної вартості товару</th>
-                <td>${taxProduct}</td>
+                <th>Випадковий номер дня</th>
+                <td>${randomDate}</td>
+              </tr>
+              <tr>
+                <th>Їх сума</th>
+                <td>${sum}</td>
               </tr>
              </table>
         `)

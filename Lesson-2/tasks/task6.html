@@ -7,28 +7,61 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Задача 4</h1>
+    <h1>Задача 6</h1>
     <p>
-        Дано кількість секунд, що пройшла від початку доби. Визначити скільки це годин і хвилин.
+        З клавіатури вводяться вартість товару та кількість одиниць 3 товарів. Обчислити вартість кожного товару окремо та загальну вартість. Вивести чек (як у супермаркеті) використовуючи елементи розмітки.
     </p>
 
     <script>
         //Вводимо необхідні дані
+        let priceProduct1 = parseFloat(prompt('Введіть вартість одиниці 1 товару', '25'))
+        let countProduct1 = parseInt(prompt('Введіть кількість 1 товару', '10'))
+
+        let priceProduct2 = parseFloat(prompt('Введіть вартість одиниці 2 товару', '30'))
+        let countProduct2 = parseInt(prompt('Введіть кількість 2 товару', '20'))
+
+        let priceProduct3 = parseFloat(prompt('Введіть вартість одиниці 3 товару', '30.5'))
+        let countProduct3 = parseInt(prompt('Введіть кількість 3 товару', '5'))
         
         
-        //Знаходимо результат
-       
+         //Знаходимо результат
+         let costProduct1 = priceProduct1 * countProduct1
+         let costProduct2 = priceProduct2 * countProduct2
+         let costProduct3 = priceProduct3 * countProduct3
+         let totalCost = costProduct1 + costProduct2 + costProduct3
+        
        
         //Виводимо результат
         document.write(`
         <table border="2px">
             <tr>
-                <th>Загальна вартість товару</th>
-                <td>${totalPriceProduct}</td>
+                <th>Назва</th>
+                <th>Кількість</th>
+                <th>Ціна</th>
+                <th>Вартість</th>
+               </tr> 
+            <tr>
+                <td>Product 1</td>
+                <td>${priceProduct1}</td>
+                <td>${countProduct1}</td>
+                <td>${costProduct1}</td>
+            </tr>
+            <tr>
+                <td>Product 2</td>
+                <td>${priceProduct2}</td>
+                <td>${countProduct2}</td>
+                <td>${costProduct2}</td>
+            </tr>
+            <tr>
+                <td>Product 3</td>
+                <td>${priceProduct3}</td>
+                <td>${countProduct3}</td>
+                <td>${costProduct3}</td>
             </tr>
               <tr>
-                <th>ПДВ 5% від загальної вартості товару</th>
-                <td>${taxProduct}</td>
+                <td>Сума</td>
+                <td></td><td></td>
+                <td>${totalCost}</td>
               </tr>
              </table>
         `)
