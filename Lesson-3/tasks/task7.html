@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Задача 7</h1>
+    <p>
+        З клавіатури вводиться номер місяця. Вивести до якої пори він відноситься
+    </p>
+    <script>
+        //Вводимо необхідні дані
+        let weekday = parseInt(prompt('Введіть місяць від 1 до 12'))
+
+        let nameOfMonth 
+        //Знаходимо результат
+        switch (weekday) {
+            case 1:
+            case 2:
+            case 12:
+                nameOfMonth = 'Зима';
+            break;
+            
+            case 3:
+            case 4:
+            case 5:
+                nameOfMonth = 'Весна';
+            break;
+            
+           
+            case 6:
+            case 7:
+            case 8:
+                nameOfMonth = 'Літо';
+            break;
+
+            case 9:
+            case 10:
+            case 11:
+                nameOfMonth = 'Осінь';
+            break;
+           
+            default:
+                nameOfMonth = 'Невірне значення';
+            break;
+        }
+       
+        //Виводимо результат
+        document.write(`
+        <table border="2px">
+            <tr>
+                <td>${nameOfMonth}</td>
+            </tr>
+            
+            </table>
+        `)
+    </script>
+
+</body>
+</html>
