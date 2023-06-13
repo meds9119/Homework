@@ -19,18 +19,18 @@
 
         
         //Знаходимо результат
-        let resultMassage
+        let resultMessage
         if (priceOfProduct > userMoney)
         { 
-            resultMassage = 'Відмова! У вас не вистачає грошей на товар'
+            resultMessage = 'Відмова! У вас не вистачає грошей на товар'
         }
         else if (priceOfProduct + LOTERY <= userMoney)
         {  
-            resultMassage = 'Ви можете прийняти участь у лотереї за 4 гривні'
+            resultMessage = 'Ви можете прийняти участь у лотереї за 4 гривні'
         }
         else 
         {
-            resultMassage = 'Гарного вечора!' //залишок грошей у користувача менше за вартість лотереї
+            resultMessage = 'Гарного вечора!' //залишок грошей у користувача менший за вартість лотереї
         }        
 
        
@@ -38,7 +38,7 @@
         document.write(`
         <table border="2px">
             <tr>
-                <td>${resultMassage}</td>
+                <td>${resultMessage}</td>
             </tr>
             
             </table>
