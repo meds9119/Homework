@@ -19,21 +19,21 @@
         let userNumber = parseInt(prompt('Введіть число від 1 до 5'))
 
         //Знаходимо результат
-        let resultMassage
+        let resultMessage
         if (randomNumber == userNumber)
         { 
-            resultMassage = 'Успіх!'
+            resultMessage = 'Успіх!'
         }
         else{
             userNumber = parseInt(prompt('Введіть число від 1 до 5'))
 
             if (randomNumber == userNumber)
             { 
-                resultMassage = 'Успіх!'
+                resultMessage = 'Успіх!'
             }
             else
             {
-                resultMassage = `Не вгадали, було загадано ${randomNumber}`
+                resultMessage = `Не вгадали, було загадано ${randomNumber}`
             }
         } 
            
@@ -41,7 +41,7 @@
         document.write(`
         <table border="2px">
             <tr>
-                <td>${resultMassage}</td>
+                <td>${resultMessage}</td>
             </tr>
             
             </table>

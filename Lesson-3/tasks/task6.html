@@ -13,34 +13,40 @@
     </p>
     <script>
         //Вводимо необхідні дані
-        let weekday = parseInt(prompt('Введіть номер дня тижня від 1 до 7'))
-
-        let dayOfWeekText 
+        let dayOfWeek = parseInt(prompt('Введіть номер дня тижня від 1 до 7'))
+        
         //Знаходимо результат
-        switch (weekday) {
+        let dayOfWeekText
+        switch (dayOfWeek) {
             case 1:
-            dayOfWeekText = 'Понеділок';
+                dayOfWeekText = 'Понеділок'
             break;
+                
             case 2:
-            dayOfWeekText = 'Вівторок';
+                dayOfWeekText = 'Вівторок'
             break;
+                
             case 3:
-            dayOfWeekText = 'Середа';
+                dayOfWeekText = 'Середа'
             break;
+                
             case 4:
-            dayOfWeekText = 'Четвер';
+                dayOfWeekText = 'Четвер'
             break;
+                
             case 5:
-            dayOfWeekText = 'П\'ятниця';
+                dayOfWeekText = 'П\'ятниця'
             break;
+                
             case 6:
-            dayOfWeekText = 'Субота';
+                dayOfWeekText = 'Субота'
             break;
             case 7:
-            dayOfWeekText = 'Неділя';
+                dayOfWeekText = 'Неділя'
             break;
+                
             default:
-            dayOfWeekText = 'Невірне значення';
+                dayOfWeekText = 'Невірне значення'
             break;
         }
        
