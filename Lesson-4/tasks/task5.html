@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<br>
+    <h1>Задача 6</h1>
+    <p>
+        Вивести 3 таблиці (по 3 рядки і 3 стовпці у кожній) за зразком
+    </p>
+        <!-- Перша таблиця має 3*3 від 1 до 9
+        Друга таблиця має 3*3 від 10 до 18
+        Третя таблиця має 3*3 від 19 до 27 -->
+
+        <table border="2px">
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+            </tr>
+        </table>
+
+    </br>
+
+    <script>
+       
+        //Знаходимо результат
+        document.write(`<table border ="2px"><tr>`)
+        for (let i = 1; i <= 9; i++) {
+            if (i % 3 === 0)
+            {
+                i++ 
+            }
+            document.write(`
+                <td>
+                 ${i}
+                </td>
+               
+                `)
+           // document.write(`<tr></tr>`)
+            
+            
+        }
+        document.write(`</tr></table>`)
+       
+
+    </script>
+
+</body>
+</html>
