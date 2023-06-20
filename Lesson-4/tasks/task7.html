@@ -15,10 +15,8 @@
     <script>
      
        const MIN_NUM = 1, MAX_NUM = 100
-    //    let userNumber = parseInt(prompt('Загадайте число від 1 до 100', '0')) 
 
-
-       for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < 3; i++) {
         let compRandomNum = Math.floor(Math.random() * MAX_NUM - MIN_NUM +1) + MIN_NUM;
         if (confirm(`Це число ${compRandomNum}?`)){
             txt = `Комп'ютер вгадав, це число ${compRandomNum}!`;
