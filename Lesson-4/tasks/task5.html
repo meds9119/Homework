@@ -15,47 +15,54 @@
         Друга таблиця має 3*3 від 10 до 18
         Третя таблиця має 3*3 від 19 до 27 -->
 
-        <table border="2px">
-            <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>5</td>
-                <td>6</td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>8</td>
-                <td>9</td>
-            </tr>
-        </table>
 
-    </br>
 
     <script>
        
-        //Знаходимо результат
-        document.write(`<table border ="2px"><tr>`)
-        for (let i = 1; i <= 9; i++) {
-            if (i % 3 === 0)
-            {
-                i++ 
+        //Виведені таблиці
+   
+
+        let numTable = 0
+        document.write('<table border="3px">')
+        for (let i = 0; i < 3; i++) {
+            
+            document.write(`<tr>`);
+            for (let j = 0; j < 3; j++) {
+                numTable++
+                document.write(`<td>${numTable}</td>`);
+                
             }
-            document.write(`
-                <td>
-                 ${i}
-                </td>
-               
-                `)
-           // document.write(`<tr></tr>`)
-            
-            
+            document.write('</tr>')
         }
-        document.write(`</tr></table>`)
-       
+        document.write('</table></br>')
+
+         
+        document.write('<table border="3px">')
+        for (let i = 0; i < 3; i++) {
+            
+            document.write(`<tr>`);
+            for (let j = 0; j < 3; j++) {
+                numTable++
+                document.write(`<td>${numTable}</td>`);
+                
+            }
+            document.write('</tr>')
+        }
+        document.write('</table></br>')
+
+         
+       document.write('<table border="3px">')
+        for (let i = 0; i < 3; i++) {
+            
+            document.write(`<tr>`);
+            for (let j = 0; j < 3; j++) {
+                numTable++
+                document.write(`<td>${numTable}</td>`);
+                
+            }
+            document.write('</tr>')
+        }
+        document.write('</table>')
 
     </script>
 
