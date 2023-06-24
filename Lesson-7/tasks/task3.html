@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework
+    </title>
+</head>
+<body>
+    <p>
+        Задача 5. Створити окремі функції, які переводять: </br>
+        1) Сантиметри у дюйми; </br>
+        2) Кілограми у фунти; </br>
+        3) Кілометри у милі.
+
+
+    </p>
+    <script>
+     
+        const CENTIMETER_TO_INCH = 0.39
+        const KILOGRAM_TO_POUND = 2.20
+        const KILOMETER_TO_MILE = 0.62
+
+        function getCentimeterToInch(centimetersCount) { 
+           return (centimetersLength * CENTIMETER_TO_INCH)
+        }
+
+        function getKilogramToPound(kilogramsCount) { 
+           return (kilogramsWeight * KILOGRAM_TO_POUND)
+            
+        }
+
+        function getKilometerToMile(firstNum, secondNum,thirdNum, fourthNum) { 
+           return (kilometersLength * KILOMETER_TO_MILE) 
+            
+        }
+       
+
+    </script>
+<script>
+
+    let centimetersLength = parseFloat(prompt(`Введіть довжину в сантиметрах`))
+    let kilogramsWeight = parseFloat(prompt(`Введіть вагу в кілограмах`))
+    let kilometersLength = parseFloat(prompt(`Введіть довжину в кілометрах`))
+   
+    
+    let resultToInch = getCentimeterToInch(centimetersLength)
+    alert (`${centimetersLength} сантиметри = ${resultToInch.toFixed(2)} дюймам`)
+
+    let resultToPound = getKilogramToPound(kilogramsWeight)
+    alert (`${kilogramsWeight} кілограми = ${resultToPound.toFixed(2)} футам`)
+
+    let resultToMile = getKilometerToMile(kilometersLength)
+    alert (`${kilometersLength} кілометри = ${resultToMile.toFixed(2)} миль`)
+
+
+</script>
+
+</body>
+</html>

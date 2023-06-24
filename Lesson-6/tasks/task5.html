@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+</head>
+<body>
+    <p>
+        З клавіатури вводитяться числа поки не буде введено 0. Знайти добуток чисел.
+
+    </p>
+    <script>
+        let res = 1
+        let userNumber 
+
+     
+        do
+        {
+            userNumber = +prompt('Введіть число', '0');
+            if (userNumber === 0)
+             break;
+                res = userNumber * res;
+        }
+        while (userNumber != 0);
+        
+
+        alert(res)
+     
+    </script>
+</body>
+</html>

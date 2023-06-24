@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework
+    </title>
+</head>
+<body>
+    <p>
+        Задача 0. Створити функцію, яка за номером місяця повертає пору року, до якої відноситься цей місяць.
+    </p>
+    <script>
+         
+        function getYearSeason(monthOfYear) {
+            switch (monthOfYear) {
+                case 1:
+                case 2:
+                case 12:
+                   yearSeason = 'Зима'
+                    break;
+    
+                case 3:
+                case 4:
+                case 5:
+                   yearSeason = 'Весна'
+                    break;
+    
+                case 6:
+                case 7:
+                case 8:
+                   yearSeason = 'Літо'
+                    break;
+            
+                default: yearSeason = 'Осінь'
+                    break;
+            }
+            return yearSeason
+        }
+    </script>
+<script>
+    
+    let yearSeason = parseInt(prompt('Введіть номер місяця від 1 до 12'))
+    let result = getYearSeason(yearSeason)
+    alert (`Пора року - ${result}!`)
+
+</script>
+
+</body>
+</html>

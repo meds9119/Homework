@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework
+    </title>
+</head>
+<body>
+    <p>
+        Задача 6. Створити функцію, яка створює таблицю з вказаною кількістю рядків і стовпців (таблиця заповнюється заданим фіксованим повідомленням).
+    </p>
+    <script>
+       
+        function getTable(rowValue, cellValue, userMessage) { 
+           
+            document.write(`<table border="3px">`)
+           for (let i = 0; i < rowValue; i++) {
+            document.write(`<tr>`);
+
+                for (let j = 0; j < cellValue; j++) {
+                    
+                    document.write(`<td>${userMessage} </td>`);
+                    
+                }
+                document.write(`</tr>`);
+            }
+            document.write(`</table>`)
+        }
+      
+    </script>
+     <script>
+
+        let rowValue = parseFloat(prompt(`Введіть кількість рядків`))
+        let cellValue = parseFloat(prompt(`Введіть кількість стовпців`))
+        let userMessage = prompt(`Введіть стисло необхідну інформацію`)
+    
+        let resultForTable = getTable(rowValue, cellValue, userMessage)
+        
+
+
+
+     </script>
+
+</body>
+</html>

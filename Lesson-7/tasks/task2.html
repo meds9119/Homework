@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework
+    </title>
+</head>
+<body>
+    <p>
+        Задача 3. Створити окремі функції, які для 4 чисел знаходять: </br>
+        1) суму; </br>
+        2) добуток; </br>
+        3) середнє арифметичне; </br>
+        4) мінімальне значення.
+
+    </p>
+    <script>
+
+        function getSum(firstNum, secondNum,thirdNum, fourthNum) { 
+           return (firstNum + secondNum + thirdNum + fourthNum)
+        }
+
+        function getMultiply(firstNum, secondNum,thirdNum, fourthNum) { 
+           return (firstNum * secondNum * thirdNum * fourthNum)
+            
+        }
+
+        function getAverageValue(firstNum, secondNum,thirdNum, fourthNum) { 
+           return (firstNum + secondNum + thirdNum + fourthNum) / 4
+            
+        }
+        
+        function getMinValue(firstNum, secondNum,thirdNum, fourthNum) { 
+           return (Math.min (firstNum, secondNum, thirdNum, fourthNum))
+            
+        }
+
+    </script>
+<script>
+
+    let firstNum = parseFloat(prompt(`Введіть перше число`))
+    let secondNum = parseFloat(prompt(`Введіть друге число`))
+    let thirdNum = parseFloat(prompt(`Введіть третє число`))
+    let fourthNum = parseFloat(prompt(`Введіть четверте число`))
+    
+    let resultSum = getSum(firstNum, secondNum,thirdNum, fourthNum)
+    alert (`Сума заданих чисел = ${resultSum}`)
+
+    let resultMultiply = getMultiply(firstNum, secondNum,thirdNum, fourthNum)
+    alert (`Добуток заданих чисел = ${resultMultiply}`)
+
+    let resultAverageValue = getAverageValue(firstNum, secondNum,thirdNum, fourthNum)
+    alert (`Середнє арифметичне значення заданих чисел = ${resultAverageValue}`)
+
+    let resultMinValue = getMinValue(firstNum, secondNum,thirdNum, fourthNum)
+    alert (`Мінімальне значення заданих чисел = ${resultMinValue}`)
+
+</script>
+
+</body>
+</html>
