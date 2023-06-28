@@ -13,14 +13,14 @@
     </p>
 
     <script>
-        //Вводимо необхідні дані
+        //Вводимо необхідні дані  <label>Click me <input type="text"></label>
         const ELEMENT_FOR_PRICE = 10
        
 
         //Знаходимо результат
         document.write(`<table>`)
         for (let i = 1; i <= 10; i++) {
-            document.write(`<tr><td> Product #${i}</td><td><input name="product_name_${i}"> </td></tr>`)
+            document.write(`<tr><td> Product #${i}</td><td><label><input name="product_name_${i}"></label> </td></tr>`)
             
         }
         document.write(`</table`)

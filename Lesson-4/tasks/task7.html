@@ -14,24 +14,20 @@
        
     <script>
      
-       const MIN_NUM = 1, MAX_NUM = 100
+       const minNum = 1, maxNum = 100
 
         for (let i = 0; i < 3; i++) {
-        let compRandomNum = Math.floor(Math.random() * MAX_NUM - MIN_NUM +1) + MIN_NUM;
+        let compRandomNum = Math.floor(Math.random() * (maxNum - minNum)) + minNum;
         if (confirm(`Це число ${compRandomNum}?`)){
-            txt = `Комп'ютер вгадав, це число ${compRandomNum}!`;
+            alert(`Комп'ютер вгадав, це число ${compRandomNum}!`);
             break;
         }
         else {
 
         }
-            txt = `Комп'ютер не вгадав.`
+            alert(`Комп'ютер не вгадав.`)
        }
        
-
-       document.write(txt)
-       
-
     </script>
 
 </body>

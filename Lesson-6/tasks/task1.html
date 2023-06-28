@@ -18,8 +18,7 @@
          let depositInvestor = parseFloat(prompt('Введіть суму вкладу на депозит', '0'))
        
          //Знаходимо результат
-         let depositInvestorResult
-         for (let i = 1; i <= 21; i++) {
+         for (let i = 1; i <= 20; i++) {
             depositInvestor = depositInvestor * 1.2;
             document.write(`${i} рік - ${depositInvestor.toFixed(2)}<br>`);
          }
