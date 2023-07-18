@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+</head>
+<body>
+    <p>
+        9. Дано масив імен. Сформувати масив з перших літер цих імен.
+    </p>
+    <script>
+        function getUserNameArr(userArrNameCount) {
+            let userArr = []
+            for (let i = 1; i <= userArrNameCount; i++) {
+                let userNames = prompt(`Введіть ${i}ше ім'я`)
+                userArr.push(userNames)
+                
+            }
+            return userArr
+        }
+
+        let userArrNameCount = parseInt(prompt(`Введіть кількість імен`))
+
+        let userArr = getUserNameArr(userArrNameCount)
+        document.write(`Оригінальний масив з іменами: ${userArr}<br>`)
+
+        
+        let newArrWithFirstLetters = userArr.map((userArrEl) => userArrEl[0])
+        document.write(`Масив з перших літер цих імен:  ${newArrWithFirstLetters}<br>`)
+
+
+    </script>
+    <script>
+        
+
+    </script>
+
+</body>
+</html>

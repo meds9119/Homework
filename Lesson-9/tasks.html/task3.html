@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+</head>
+<body>
+    <p>
+        7.Дано масив цін. Змінити цей масив так, що на ціни товарів, які більші за 1000 грн. дати 30% знижки.
+    </p>
+    <script>
+        const min = 1
+        const max = 1500
+        function getUserArr(userArrElCount, min, max) {
+            let userArr = []
+            for (let i = 0; i < userArrElCount; i++) {
+                let random = Math.floor(Math.random() * (max - min + 1) + min)
+                userArr.push(random)
+                
+            }
+            return userArr
+        }
+
+        let userArrElCount = parseInt(prompt(`Введіть кількість елементів`))
+
+        let userArr = getUserArr(userArrElCount, min, max)
+        document.write(`Оригінальний масив: ${userArr}<br>`)
+
+         
+
+        userArr.forEach((userArrEl, index, userArr) => {
+            if (userArrEl > 1000) 
+                userArr [index] *= 0.7
+            userArr [index] = userArr [index].toFixed(2) + ' UAH '
+            
+        }
+        )
+
+        //let resultFuncDiscount = getDiscount(resultUserArr)
+        document.write(`На ціни товарів, що більші за 1000 маємо 30% знижки:   ${userArr}<br>`)
+        
+
+    </script>
+
+</body>
+</html>

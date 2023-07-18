@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+</head>
+<body>
+    <p>
+        6.Дано масив елементів. Усі елементи, які більші за перший елемент помножити на 2
+    </p>
+    <script>
+         const min = 1
+         const max = 300
+         function getUserArr(userArrEl, min, max) {
+            let userArr = []
+            for (let i = 0; i < userArrEl; i++) {
+                let random = Math.floor(Math.random() * (max - min + 1) + min)
+                userArr.push(random)
+                
+            }
+            return userArr
+        }
+
+         let userArrEl = parseInt(prompt(`Введіть кількість елементів`))
+
+         let resultUserArr = getUserArr(userArrEl, min, max)
+         document.write(`Оригінальний масив: ${resultUserArr}<br>`)
+
+         let elemArr = resultUserArr.map((userArrEl, index, userArr) =>{
+            if (userArr[0] < userArrEl) 
+             userArrEl = userArrEl * 2
+             return userArrEl
+         }
+        )
+         document.write(`Усі елементи, які більші за перший елемент, перемножені на 2: ${elemArr}`)
+
+    </script>
+
+</body>
+</html>

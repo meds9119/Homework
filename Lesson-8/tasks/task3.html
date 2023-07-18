@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+</head>
+<body>
+    <p>
+        Задача 6. Дано послідовність цін товарів та назв (у окремих масивах). Вивести на екран ті, які може собі дозволити користувач (кількість грошей задається).
+    </p>
+    <script>
+        //
+        function getNamesProducts(productCount) {
+            let names = []
+            for (let i = 0; i < productCount; i++) {
+                let nameProduct = prompt(`Введіть назву товару`)
+                names.push(nameProduct)
+                
+            }
+            return names
+            
+        }
+
+        function getPriceProducts(productCount, nameProducts) {
+            let price = []
+            for (let i = 0; i < productCount; i++) {
+                let priceProduct = parseFloat(prompt(`Введіть ціну товару: ${nameProducts[i]}`))
+                price.push(priceProduct)
+               
+            }
+            return price
+            
+        }
+        
+      
+        function getUserPurchase(price, userMoney) {
+            let indexes = []
+            for (let i = 0; i < price.length; i++) {
+                if (price [i] <= userMoney)
+                    indexes.push(i)
+                  
+            }
+            
+            return indexes
+        }
+         
+
+    </script>
+    <script>
+
+        let userMoney = parseFloat(prompt(`Введіть кількість грошей`))
+        let productCount = parseInt(prompt(`Введіть кількість товару`))
+
+        let resultNamesProducts = getNamesProducts(productCount)
+        let resultPriceProducts = getPriceProducts(productCount, resultNamesProducts)
+        let resultUserPurchase = getUserPurchase(resultPriceProducts, userMoney)
+
+        document.write(`Кількість грошей: ${userMoney}<br>`)
+     
+        for (let i = 0; i < resultUserPurchase.length; i++) {
+               document.write(`Доступні товари: ${resultNamesProducts[resultUserPurchase[i]]} по ціні: ${resultPriceProducts[resultUserPurchase[i]]} <br>`)
+                
+        }
+      
+
+    </script>
+
+         
+        
+   
+
+
+</body>
+</html>

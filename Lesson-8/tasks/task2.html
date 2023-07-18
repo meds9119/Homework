@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+</head>
+<body>
+    <p>
+        Задача 5. Дано послідовність оцінок учня. Підрахувати кількість:
+        1)	двійок
+        2)	кількість хороших оцінок (добре, відмінно);
+        3)	кількість оцінок, які нижче середнього.
+
+    </p>
+    <script>
+        //    
+        
+        function getStudentsMarks() {
+            let marks = []
+            let marksCount = parseInt(prompt(`Введіть кількість оцінок`))
+            for (let i = 1; i <= marksCount; i++) {
+                let studentsMarks = parseInt(prompt(`Введіть ${i}шу оцінку учня`));
+                marks.push(studentsMarks)
+                
+            }
+            return marks
+        }
+
+        function getStudentsProgress(marks) {
+            let deuceNum = 0
+            let goodMarksNum = 0
+            let belowAverageNum = 0
+            for (let i = 0; i < marks.length; i++) {
+                if(marks[i] === 2)
+                deuceNum++;
+
+                if (marks[i] === 4 || marks[i] === 5)
+                goodMarksNum++
+
+                if(marks[i] === 3)
+                belowAverageNum++
+                
+  
+            }
+            let marksProgress = [deuceNum, goodMarksNum, belowAverageNum]
+
+            return marksProgress
+        }
+      
+
+    </script>
+    <script>
+        let resultStudentsMarks = getStudentsMarks()    
+        let resultStudentsProgress = getStudentsProgress(resultStudentsMarks)
+        
+        document.write(`Кількість двійок ${resultStudentsProgress[0]}<br>, хороших оцінок чотири і п'ять ${resultStudentsProgress[1]}<br>, 
+        оцінок нижче середнього ${resultStudentsProgress[2]}`)
+     
+
+    </script>
+
+         
+        
+   
+
+
+</body>
+</html>
