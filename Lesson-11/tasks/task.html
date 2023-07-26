@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+</head>
+<body>
+    <p>
+        Задача 1. Знайти суми елементів у вказаній області (масиви розділені на 4 рівні частини -  не звертаємо увагу на криві малюнки ☺ )
+        1 - 4)
+        5) Суму парних рядків
+        6) Суму непарних стовпців
+        7) У парних рядках – непарні стовпці, у непарних – парні.
+
+    </p>
+    <script>
+        // Генеруємо двовимірний масив 
+
+        const min = 1
+        const max = 1000
+            
+
+        function getArray (firstLengthArr, secondLengthArr){
+            let array = []
+            for (let i = 0; i < firstLengthArr; i++) {
+                array [i] = []
+                for (let j = 0; j < secondLengthArr; j++) {
+                    let random = Math.floor(Math.random() * (max - min + 1) + min)
+                    array [i][j] = random
+    
+                }
+                
+            }
+            return array
+        }
+
+        //......1-4) Знайти суми елементів у вказаній області
+
+        function getArraySum (array, iStart, iEnd, jStart, jEnd){
+            let sum = 0
+            for (let i = iStart; i < iEnd; i++) {
+                for (let j = jStart; j < jEnd; j++) {
+                    sum += array [i][j]
+                    
+                }
+                
+            }
+            return sum
+        }
+
+        //......5) Суму парних рядків
+
+        
+        function getRowsSum (firstLengthArr, secondLengthArr){
+            let rowsSum = 0
+            for (let i = 0; i < firstLengthArr; i++) {
+                if ((i + 1) % 2 === 0) {
+                    for (let j = 0; j < secondLengthArr; j++) {
+                        rowsSum += array[i][j] 
+                    }
+                }
+            }
+            return rowsSum
+        }
+
+        //.....6) Суму непарних стовпців
+
+        function getColumnsSum (firstLengthArr, secondLengthArr){
+            let columnsSum = 0
+            for (let i = 0; i < firstLengthArr; i++) {
+                    for (let j = 0; j < secondLengthArr; j++) {
+                        if ((j + 1) % 2 !== 0) {
+                        columnsSum += array[i][j] 
+                        
+                    }
+            }
+            }
+            return columnsSum
+        }
+
+        //.....7) У парних рядках – непарні стовпці, у непарних – парні.
+
+        function getSum (firstLengthArr, secondLengthArr){
+            let newArray = []
+            let evenLines = 0
+            let oddLines = 0
+            for (let i = 0; i < firstLengthArr; i++) {
+                if ((i + 1) % 2 === 0) {
+                    for (let j = 0; j < secondLengthArr; j++) {
+                        if ((j + 1) % 2 !== 0) {
+                            evenLines += array[i][j] 
+                        
+                        }
+                    }
+                }else {
+                    for (let j = 0; j < secondLengthArr; j++) {
+                        if ((j + 1) % 2 === 0) {
+                            oddLines += array[i][j] 
+                        
+                        }
+                    }
+                }
+            }
+            newArray.push(evenLines,oddLines)
+            return newArray
+        }
+
+
+
+
+        
+    </script>
+    <script>
+        let firstLengthArr = parseInt(prompt(`Введіть кількість елементів вертикаль, парне число`))
+        let secondLengthArr = parseInt(prompt(`Введіть кількість елементів горизонталь, парне число`))
+        if (firstLengthArr % 2 !== 0 || secondLengthArr % 2 !== 0)
+        throw new Error ('Некорректні дані')
+
+        let middleFirst = firstLengthArr / 2
+        let middleSecond = secondLengthArr / 2
+
+
+        // Оригінальний масив
+        let array = getArray (firstLengthArr, secondLengthArr)
+        document.write(`${array}<br>`)
+
+        // Задачі 1-4
+        let resultSumFirst = getArraySum (array, 0, middleFirst, 0, middleSecond)
+        document.write(`1) Сума першої області: ${resultSumFirst}<br>`)
+
+        let resultSumSecond = getArraySum (array, 0, middleFirst, middleSecond, secondLengthArr)
+        document.write(` 2) Сума другої області: ${resultSumSecond}<br>`)
+
+        let resultSumThree = getArraySum (array, middleFirst, firstLengthArr, 0, middleSecond)
+        document.write(`3) Сума третьої області: ${resultSumThree}<br>`)
+
+        let resultSumFourth = getArraySum (array, middleFirst, firstLengthArr, middleSecond, secondLengthArr)
+        document.write(`4) Сума четвертоі області: ${resultSumFourth}<br>`)
+
+        // Задача 5. Суму парних рядків
+
+        let resultRowsSum = getRowsSum (firstLengthArr, secondLengthArr)
+        document.write(`5) Сума парних рядків: ${resultRowsSum}<br>`)
+
+        // Задача 6. Суму непарних стовпців
+        let resultColumnsSum = getColumnsSum (firstLengthArr, secondLengthArr)
+        document.write(`6) Сума непарних стовпців: ${resultColumnsSum}<br>`)
+
+        // Задача 7. У парних рядках – непарні стовпці, у непарних – парні.
+        let resultSum = getSum (firstLengthArr, secondLengthArr)
+        document.write(`7) Сума непарних стовпців: ${resultSum}<br>`)
+    
+
+    </script>
+
+</body>
+</html>

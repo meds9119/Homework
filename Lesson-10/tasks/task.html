@@ -62,8 +62,10 @@
       
         //....3)Сформувати список з тих цін, які більші за попереднє значення
         let pricesMoreThanPrevious = prices.filter((priceEl, index, prices) => {
-            let nextPrice = prices[index + 1]
-            if (nextPrice > priceEl) return nextPrice
+            if(index !== 0) {
+                let prevPrice = prices[index - 1]
+                if (prevPrice < priceEl  ) return priceEl
+            }
         })
         document.write(`3)  ${pricesMoreThanPrevious}<br>`)
         
@@ -109,8 +111,7 @@
         }, 0)
         document.write(`8)  ${pricesCountMoreThousand}<br> `)
 
-            
-        //})
+        
         //....9) Підрахувати суму цін, що більше за 1000
         let sumPrices = prices.reduce((sum, priceEl) =>{
         if (priceEl > 1000)

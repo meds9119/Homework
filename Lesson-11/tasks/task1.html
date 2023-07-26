@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+</head>
+<body>
+    <p>
+        Задача 2. Дано інформацію про прибуток К магазинів протягом тижня. Знайти :
+        1) загальний прибуток кожного масиву за тиждень;
+        2) загальний прибуток усіх магазинів по дням (загальний прибуток усіх магазинів за понеділок, за вівторок, і т.д.);
+        3) загальний прибуток за робочі дні
+        4) загальний прибуток за вихідні дні
+        5) максимальний прибуток за середу
+        6) сформувати загальний список (одновимірний масив) зі значенням, які що більші за 200
+        7) відсортувати кожен тиждень за зростанням
+        8) відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні (рядку), тобто при порівнянні рядків потрібно порівнювати максимальні елементи у кожному з цих рядків
+        8) упорядкувати тижні (рядки) за спаданням суми елементів у рядку (тобто при порівнянні двох рядків треба знайти суму кожного з рядків і порівнювати ці суми, на основі цих сум буде зрозуміло, який з елементів повинен іти раніше).
+
+        
+    </p>
+    <script>
+
+        // Генеруємо двовимірний масив 
+
+        const min = 1
+        const max = 300
+        const weekDays = 7
+            
+
+        function getArrayShop (countShop){
+            let arrayShop = []
+            for (let i = 0; i < countShop; i++) {
+                arrayShop [i] = []
+                for (let j = 0; j < weekDays; j++) {
+                    let random = Math.floor(Math.random() * (max - min + 1) + min)
+                    arrayShop [i][j] = random
+    
+                }
+
+            }
+            return arrayShop
+        }
+
+
+
+        //....1) загальний прибуток кожного масиву за тиждень;
+
+        function getTotalShopProfit (arrayShop){
+            let shopsProfit = []
+            for (let i = 0; i < arrayShop.length; i++) {
+                let totalShopProfitPerWeek = 0
+                for (let j = 0; j < weekDays; j++) {
+                    totalShopProfitPerWeek += arrayShop [i][j]
+                    
+                    
+                }
+                shopsProfit.push(totalShopProfitPerWeek)  
+                
+            }
+            return shopsProfit
+        }
+
+
+
+        //....2) загальний прибуток усіх магазинів по дням (загальний прибуток усіх магазинів за понеділок, за вівторок, і т.д.);
+
+        function getTotalShopProfitPerDay (arrayShop){
+            let shopsProfit = []
+            for (let j = 0; j < weekDays; j++) {
+                let totalShopProfitPerDay = 0
+                for (let i = 0; i < arrayShop.length; i++) {
+                    totalShopProfitPerDay += arrayShop [i][j]
+                   
+                    
+                }
+                shopsProfit.push(totalShopProfitPerDay) 
+                
+            }
+            return shopsProfit
+        }
+
+        //....3) загальний прибуток за робочі дні, 4) загальний прибуток за вихідні дні;
+
+        function getTotalShopProfitPerWeekDay (arrayShop, jDayStart, jDayEnd){
+            let totalShopProfitPerWeekDay = 0
+            for (let j = jDayStart; j < jDayEnd; j++) {
+                for (let i = 0; i < arrayShop.length; i++) {
+                    totalShopProfitPerWeekDay += arrayShop [i][j]
+                    
+                }
+                
+            }
+            return totalShopProfitPerWeekDay
+        }
+
+    </script>
+    <script>
+
+        let countShop = parseInt(prompt(`Введіть кількість магазинів`))
+        let arrayDays = ['понеділок', 'вівторок', 'середа', 'четвер', 'п\'ятниця', 'субота', 'неділя']
+
+        //....Оригінальний масив
+        let resultArrayShop = getArrayShop (countShop)
+        
+
+        //....1) загальний прибуток кожного масиву за тиждень;
+
+        let resultTotalShopProfit = getTotalShopProfit (resultArrayShop)
+
+        for (let i = 0; i < resultTotalShopProfit.length; i++) {
+               document.write(`1) Загальний прибуток магазину: ${i} за тиждень: ${resultTotalShopProfit[i]} <br>`)
+                
+        }
+      
+        // 2) загальний прибуток усіх магазинів по дням (загальний прибуток усіх магазинів за понеділок, за вівторок, і т.д.);
+        let resultTotalShopProfitPerDay = getTotalShopProfitPerDay (resultArrayShop)
+
+        for (let i = 0; i < resultTotalShopProfitPerDay.length; i++) {
+              document.write(`2) Загальний прибуток усіх магазинів: ${resultTotalShopProfitPerDay[i]} за день неділі: ${arrayDays[i]} <br>`)
+                
+        }
+
+        // 3) загальний прибуток за робочі дні;
+
+        let resultTotalShopProfitPerWorkingDay = getTotalShopProfitPerWeekDay (resultArrayShop, 0, 5)
+        document.write(`3) Загальний прибуток за робочі дні: ${resultTotalShopProfitPerWorkingDay}<br>`)
+
+        // 4) загальний прибуток за вихідні дні;
+
+        let resultTotalShopProfitPerWeekendDay = getTotalShopProfitPerWeekDay (resultArrayShop, 5, 7)
+        document.write(`4) Загальний прибуток за вихідні дні: ${resultTotalShopProfitPerWeekendDay}<br>`)
+
+        // 6) сформувати загальний список (одновимірний масив) зі значенням, які більші за 200;....І розв'язок, і вивід результату.
+
+        let totalListMoreThan = resultArrayShop
+        .flat(Infinity)
+        .filter((arrayShopEl, index, arrayShop) => arrayShopEl > 200)
+        document.write(`6) загальний список (одновимірний масив) зі значенням, які більші за 200: ${totalListMoreThan}<br>`)
+
+
+
+        
+
+        
+      
+
+    
+
+    </script>
+
+</body>
+</html>
