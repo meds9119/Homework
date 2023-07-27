@@ -30,7 +30,7 @@
         const weekDays = 7
             
 
-        function getArrayShop (countShop){
+        function getArrayShop (countShop, weekDays){
             let arrayShop = []
             for (let i = 0; i < countShop; i++) {
                 arrayShop [i] = []
@@ -48,7 +48,7 @@
 
         //....1) загальний прибуток кожного масиву за тиждень;
 
-        function getTotalShopProfit (arrayShop){
+        function getTotalShopProfit (arrayShop, weekDays){
             let shopsProfit = []
             for (let i = 0; i < arrayShop.length; i++) {
                 let totalShopProfitPerWeek = 0
@@ -67,7 +67,7 @@
 
         //....2) загальний прибуток усіх магазинів по дням (загальний прибуток усіх магазинів за понеділок, за вівторок, і т.д.);
 
-        function getTotalShopProfitPerDay (arrayShop){
+        function getTotalShopProfitPerDay (arrayShop, weekDays){
             let shopsProfit = []
             for (let j = 0; j < weekDays; j++) {
                 let totalShopProfitPerDay = 0
@@ -103,12 +103,12 @@
         let arrayDays = ['понеділок', 'вівторок', 'середа', 'четвер', 'п\'ятниця', 'субота', 'неділя']
 
         //....Оригінальний масив
-        let resultArrayShop = getArrayShop (countShop)
+        let resultArrayShop = getArrayShop (countShop, weekDays)
         
 
         //....1) загальний прибуток кожного масиву за тиждень;
 
-        let resultTotalShopProfit = getTotalShopProfit (resultArrayShop)
+        let resultTotalShopProfit = getTotalShopProfit (resultArrayShop, weekDays)
 
         for (let i = 0; i < resultTotalShopProfit.length; i++) {
                document.write(`1) Загальний прибуток магазину: ${i} за тиждень: ${resultTotalShopProfit[i]} <br>`)
@@ -116,7 +116,7 @@
         }
       
         // 2) загальний прибуток усіх магазинів по дням (загальний прибуток усіх магазинів за понеділок, за вівторок, і т.д.);
-        let resultTotalShopProfitPerDay = getTotalShopProfitPerDay (resultArrayShop)
+        let resultTotalShopProfitPerDay = getTotalShopProfitPerDay (resultArrayShop, weekDays)
 
         for (let i = 0; i < resultTotalShopProfitPerDay.length; i++) {
               document.write(`2) Загальний прибуток усіх магазинів: ${resultTotalShopProfitPerDay[i]} за день неділі: ${arrayDays[i]} <br>`)
@@ -137,7 +137,7 @@
 
         let totalListMoreThan = resultArrayShop
         .flat(Infinity)
-        .filter((arrayShopEl, index, arrayShop) => arrayShopEl > 200)
+        .filter((arrayShopEl) => arrayShopEl > 200)
         document.write(`6) загальний список (одновимірний масив) зі значенням, які більші за 200: ${totalListMoreThan}<br>`)
 
 
