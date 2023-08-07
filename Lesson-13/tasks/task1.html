@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+</head>
+<body>
+    <p>
+        Задача 2. Реалізувати бінарний пошук (розглядали на попередніх уроках) з використанням рекурсивного алгоритму.
+    </p>
+    <script>
+      // Одновимірний масив: 
+      let array = [3, 31, 48, 17, 55, 0, 9, 99, 13, 24, 76, 90, 78, 14]
+      document.write(`Оригінальний масив: [${array}]<br>`)
+
+      // Вілсортований масив: 
+      array.sort((a, b) => a - b)
+      document.write(`Упорядкований масив: [${array}]<br>`)
+
+      // Функція бінарного пошуку по відсортованому масиву з використанням рекурсивного алгоритму:
+
+       function binarySearch (array, searchElement, start, end){
+                while (start <= end) {
+                let middle = Math.floor((start + end) / 2)
+                if (array[middle] === searchElement) return middle
+                if (array[middle] < searchElement) return binarySearch(array, searchElement, middle + 1, end)
+                if (array[middle] > searchElement) return binarySearch(array, searchElement, start, middle - 1)
+                }
+        }
+
+      // Виклик та вивід результату:
+         let resultBinarySearch = binarySearch (array, 13, 0, array.length - 1)
+         if(resultBinarySearch !== -1)
+           document.write(`Шуканий елемент 13 знайдено під індексом: ${resultBinarySearch}<br>`)
+         else 
+           document.write(`Такого елементу не знайдено`)
+
+    </script>
+    <script>
+    
+
+    </script>
+
+</body>
+</html>

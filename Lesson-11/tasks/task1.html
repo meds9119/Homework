@@ -30,7 +30,7 @@
         const weekDays = 7
             
 
-        function getArrayShop (countShop, weekDays){
+        function getArrayShop (countShop, weekDays, min, max){
             let arrayShop = []
             for (let i = 0; i < countShop; i++) {
                 arrayShop [i] = []
@@ -96,6 +96,20 @@
             return totalShopProfitPerWeekDay
         }
 
+        // 5) максимальний прибуток за середу;
+
+        function getTotalShopProfitPerWednesday (arrayShop, getTotalShopProfitPerDay){
+            let totalShopProfitPerWednesday = 0
+            for (let i = 0; i < arrayShop.length; i++) {
+                for (let i = 0; i < array.length; i++) {
+                    const element = array[i];
+                    
+                }
+                
+                
+            }
+        }
+
     </script>
     <script>
 
@@ -103,7 +117,7 @@
         let arrayDays = ['понеділок', 'вівторок', 'середа', 'четвер', 'п\'ятниця', 'субота', 'неділя']
 
         //....Оригінальний масив
-        let resultArrayShop = getArrayShop (countShop, weekDays)
+        let resultArrayShop = getArrayShop (countShop, weekDays, min, max)
         
 
         //....1) загальний прибуток кожного масиву за тиждень;
@@ -139,13 +153,6 @@
         .flat(Infinity)
         .filter((arrayShopEl) => arrayShopEl > 200)
         document.write(`6) загальний список (одновимірний масив) зі значенням, які більші за 200: ${totalListMoreThan}<br>`)
-
-
-
-        
-
-        
-      
 
     
 

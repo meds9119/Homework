@@ -8,10 +8,59 @@
 </head>
 <body>
     <p>
-        
+        Задача 1. Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під час сортування бульбашкою
+
     </p>
     <script>
-    
+         // Згенерували масив 
+
+         const length = 30
+         const min = 1
+         const max = 150
+            
+         function getRandomNumber(length, min, max) {
+            let array = []
+                for (let i = 0; i < length; i++) {
+                    let random = min + ( Math.floor(Math.random() * (max - min + 1) + min))
+                    array.push(random)
+                    
+                }
+                return array
+            }
+
+         let array = getRandomNumber(length, min, max)
+         document.write(`Згенерований масив:  [${array}]<br>`)
+
+         // Функція для підрахунку обмінів під час сортування бульбашкою
+
+         function getBubbleSortArray (array){
+            let counter = 0
+            let changed 
+            do{
+                changed = false
+                for (let i = 1; i < array.length; i++) {
+                    if (array[i - 1] > array[i]){
+                        let tmp = array[i - 1];
+                        array[i - 1] = array[i]
+                        array[i] = tmp
+                          changed = true
+                          counter++
+                    }
+                    
+                }
+            }
+            while (changed)
+            console.log(array)
+            return counter
+         }
+
+         // Виклик та вивід результату: 
+         let resultBubbleSortArray = getBubbleSortArray(array)
+         document.write(`Кількість обмінів під час сортування бульбашкою: ${resultBubbleSortArray}`)
+
+
+      
+        
 
     </script>
     <script>

@@ -8,9 +8,50 @@
 </head>
 <body>
     <p>
-        
+        Задача 3. Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під час сортування включеннями.
     </p>
     <script>
+
+         // Згенерували масив 
+         const length = 30
+         const min = 1
+         const max = 150
+            
+         function getRandomNumber(length, min, max) {
+            let array = []
+                for (let i = 0; i < length; i++) {
+                    let random = min + ( Math.floor(Math.random() * (max - min + 1) + min))
+                    array.push(random)
+                    
+                }
+                return array
+            }
+
+         let array = getRandomNumber(length, min, max)
+         document.write(`Згенерований масив:  [${array}]<br>`)
+
+         // Функція для підрахунку обмінів під час сортування включенням
+
+         function getIncludesSortArray (array){
+            let counter = 0
+            for (let k = 1; k < array.length; k++){
+                const currentElement = array[k]
+                let i = k - 1
+                while (i >= 0 && array[i] > currentElement){
+                    array[i + 1] + array[i]
+                    i = i + 1
+                }
+                array[i + 1] = currentElement
+                counter++
+               
+            }
+            return counter
+            console.log(array)
+
+         }
+         // Виклик та вивід результату: 
+         let resultIncludesSortArray = getIncludesSortArray(array)
+         document.write(`Кількість обмінів під час сортування включенням: ${resultIncludesSortArray}`)
     
 
     </script>

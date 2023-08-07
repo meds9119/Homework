@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+</head>
+<body>
+    <p>
+        Створити двовимірний масив. 
+    </p>
+    <script>
+        
+        //const minValue = 1
+        //const maxValue = 100
+
+       // Функція генерування рандомного числа
+       function getRandomNum (minValue, maxValue){
+        return minValue + Math.floor(Math.random() * (maxValue - minValue +1))
+       }
+
+       // Функція генерування одновимірного масиву (одного рядка)
+
+       function generateRandomArray (arrayLength, minValue, maxValue){
+        const arr = []
+        for (let i = 0; i < arrayLength; i++) {
+            const randNum = getRandomNum (minValue, maxValue)
+            arr.push(randNum)
+        }
+        return arr
+       }
+
+       // Функція генерування двовимірного масиву (двовимірної таблиці даних)
+
+       function generateRandomTable (rowsNumber, columnsNumber, minValue, maxValue){
+        const table = []
+        for (let i = 0; i < rowsNumber; i++) {
+            const randomRow = generateRandomArray (columnsNumber, minValue, maxValue)
+            table.push(randomRow)
+            
+        }
+        return table
+       }
+
+       let table = generateRandomTable (5, 5, minValue, maxValue)
+       //document.write(`[${table}]<br>`)
+
+       for (let i = 0; i < table.length; i++) {
+               document.write(`[${table[i]}]<br>`)
+                
+        }
+
+        const minValue = 1
+        const maxValue = 100
+
+       // Функція генерування рандомного числа
+       function getRandomNum (minValue, maxValue){
+        return minValue + Math.floor(Math.random() * (maxValue - minValue +1))
+       }
+
+       // Функція генерування одновимірного масиву 
+
+       function generateRandomArray (arrayLength, minValue, maxValue){
+        const array = []
+        for (let i = 0; i < arrayLength; i++) {
+            const randNum = getRandomNum (minValue, maxValue)
+            array.push(randNum)
+         }
+         return array
+       }
+
+       let array = generateRandomArray (10, minValue, maxValue)
+       document.write(`Згенерований одновимірний масив: <br> [${array}]<br>`)
+
+
+
+
+    </script>
+    <script>
+        //  const x = 1
+        //  const i = 10
+        
+        // function getFindExponent1 (i, x) {
+        //     if (x === 0) return 1
+        //     else {
+        //     return getFindExponent1 (i, x - 1) + i * x
+
+        //     }
+        // } 
+
+        // let resultFindExponent1 = getFindExponent1 (i, x)
+        // document.write(`${resultFindExponent1}`)
+    
+
+    </script>
+
+</body>
+</html> 

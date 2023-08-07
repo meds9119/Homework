@@ -8,9 +8,54 @@
 </head>
 <body>
     <p>
-        
+        Задача 4. Для розглянутих методів сортування спробувати вивести етапи сортування шляхом виведення відповідних таблиць за зразком.
+        Тобто кожного разу після обміну елементів вивести поточний стан масиву на екран.
     </p>
     <script>
+         // Згенерували масив 
+         const length = 10
+         const min = 1
+         const max = 50
+            
+         function getRandomNumber(length, min, max) {
+            let array = []
+                for (let i = 0; i < length; i++) {
+                    let random = min + ( Math.floor(Math.random() * (max - min + 1) + min))
+                    array.push(random)
+                    
+                }
+                return array
+            }
+
+         let array = getRandomNumber(length, min, max)
+         document.write(`Згенерований масив:  [${array}]<br>`)
+
+         // Функція сортування бульбашкою
+
+         function getBubbleSortArray (array){
+            let counter = 0
+            let changed 
+            do{
+                changed = false
+                for (let i = 1; i < array.length; i++) {
+                    if (array[i - 1] > array[i]){
+                        let tmp = array[i - 1];
+                        array[i - 1] = array[i]
+                        array[i] = tmp
+                          changed = true
+                          counter++
+                          document.write(`[${array}]<br>`)
+                    }
+                }
+            }
+            while (changed)
+            document.write(`[${array}]<br>`)
+            return counter
+         }
+
+         // Виклик та вивід результату: 
+         let resultBubbleSortArray = getBubbleSortArray(array)
+         document.write(`Кількість обмінів під час сортування бульбашкою: ${resultBubbleSortArray}`)
     
 
     </script>

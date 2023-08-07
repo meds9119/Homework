@@ -22,7 +22,7 @@
         const max = 1000
             
 
-        function getArray (firstLengthArr, secondLengthArr){
+        function getArray (firstLengthArr, secondLengthArr, min, max){
             let array = []
             for (let i = 0; i < firstLengthArr; i++) {
                 array [i] = []
@@ -123,7 +123,7 @@
 
 
         // Оригінальний масив
-        let array = getArray (firstLengthArr, secondLengthArr)
+        let array = getArray (firstLengthArr, secondLengthArr, min, max)
         document.write(`${array}<br>`)
 
         // Задачі 1-4

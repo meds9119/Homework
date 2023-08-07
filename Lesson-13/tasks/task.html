@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+</head>
+<body>
+    <p>
+        Задача 0. Реалізувати рекурсивну функцію знаходження степеня числа а.
+
+    </p>
+    <script>
+         const a = 2
+         const n = 0
+
+         // Рекурсивна функція знаходження степеня числа а:
+        function getFindExponent (a, n) {
+            if (n === 0) return 1
+            else {
+                return getFindExponent (a, n - 1) * a
+
+            }
+        }
+
+        // Виклик та вивід результату:
+        let resultFindExponent = getFindExponent (a, n)
+        document.write(`${resultFindExponent}`)
+
+        
+
+    </script>
+    <script>
+    
+
+    </script>
+
+</body>
+</html>

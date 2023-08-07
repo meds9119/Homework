@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+</head>
+<body>
+    <p>
+        Задача 6. Дано масив імен. Застосовуючи відповідне сортування та бінарний пошук визначити, чи є у масиві ім’я довжиною 5 символів і під яким індексом.
+    </p>
+    <script>
+         // Дано масив імен: 
+         let names = ['John', 'Paul', 'Tom', 'Olga', 'Andrew', 'Abrams', 'Jenifer', 'Peter', 'Tina', 'Jack', 'Nina']
+         const searchNamesLength = 5
+        
+        // Відсортований масив імен:
+        names.sort()
+        document.write(`[${names}]`)
+
+         // Функція бінарного пошуку:
+         function binarySearchNames (names, searchNamesLength){
+            let start = 0
+            let end = names.length - 1
+            while (start <= end) {
+                const middle = Math.floor((start + end) / 2)
+                if (names[middle].length === searchNamesLength) return middle
+                if (names[middle].length < searchNamesLength) start = middle + 1
+                if (names[middle].length > searchNamesLength) end = middle - 1
+            }
+            return - 1
+        }
+        
+        // Виклик та вивід результату:
+        let resultBinarySearchNames = binarySearchNames (names, searchNamesLength)
+        if (resultBinarySearchNames !== - 1)
+           alert(`Ім'я довжиною в 5 сивмолів є в масиві, під індексом ${resultBinarySearchNames}`)
+        else 
+           alert(`Імені з такою довжиною символів у масиві немає`)
+         
+
+        
+    
+
+    </script>
+    <script>
+    
+
+    </script>
+
+</body>
+</html>

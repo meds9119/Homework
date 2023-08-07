@@ -8,9 +8,65 @@
 </head>
 <body>
     <p>
-        
+        Задача 2. Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під час сортування змішуванням.
     </p>
     <script>
+        // Згенерували масив 
+         const length = 30
+         const min = 1
+         const max = 150
+            
+         function getRandomNumber(length, min, max) {
+            let array = []
+                for (let i = 0; i < length; i++) {
+                    let random = min + ( Math.floor(Math.random() * (max - min + 1) + min))
+                    array.push(random)
+                    
+                }
+                return array
+            }
+
+         let array = getRandomNumber(length, min, max)
+         document.write(`Згенерований масив:  [${array}]<br>`)
+
+         // Функція для підрахунку обмінів під час сортування змішуванням
+
+         function swap (arr, i, j) {
+           const temp = arr[i]
+             arr[i] = arr[j]
+             arr[j] = temp
+         }
+
+         function getShakerSort(array) {
+            let counter = 0
+            let leftIndex = 0
+            let rightIndex = array.length - 1
+
+            while (leftIndex < rightIndex) {
+                for (let idx = leftIndex; idx < rightIndex; idx++) {
+                    if (array[idx] > array[idx + 1]){
+                        swap (array, idx, idx + 1)
+                        counter++
+                    }
+                    
+                }
+                rightIndex--;
+
+                for (let idx = rightIndex; idx < leftIndex; idx--) {
+                    if (array[idx] < array[idx - 1]) {
+                        swap (array, idx, idx - 1)
+                        counter++
+                    }
+                    
+                }
+                leftIndex++;
+            }
+            return counter
+         }
+
+         // Виклик та вивід результату: 
+        let resultShakerSort = getShakerSort(array)
+         document.write(`Кількість обмінів під час сортування змішуванням: ${resultShakerSort}`)
     
 
     </script>
