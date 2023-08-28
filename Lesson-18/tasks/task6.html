@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+    <script>
+        function getTotalPrice() {
+            let transportPrice = 0;
+            const userTransport = document.getElementsByClassName('transport')
+            for (const transport of userTransport) {
+                transportPrice += parseInt(transport.value)
+            }
+            let menuPrice = 0;
+            const userMenu = document.getElementsByClassName('menu')
+            for (const menu of userMenu) {
+                if (menu.checked)
+                    menuPrice += parseInt(menu.value)
+            }
+
+            let guidePrice = 0;
+            const userGuide = document.getElementsByClassName('guide')
+            for (const guide of userGuide) {
+                if (guide.checked)
+                    guidePrice += parseInt(guide.value)
+            }
+            const sum = transportPrice + menuPrice + guidePrice
+            document.getElementById('result').innerText = sum.toFixed(2)
+        }
+
+        window.onload = function () {
+            document.querySelector('button').onclick = getTotalPrice
+        }
+        h2.style.size = "20px"
+    </script>
+</head>
+<body>
+<p>
+    Задача 7. Подорож складається з 3 етапів. На кожному етапі користувач може вибрати один з видів транспорту
+    (авто, автобус, літак - випадаючий список), харчування (сніданок, обід, вечеря – checkbоx) та одного з 3-х
+    гідів(використати
+    - radio buttons). Ціни визначте самі. Підрахувати загальну вартість.
+</p>
+<div>
+    <h2>Подорож Київ - Чернігів</h2>
+</div>
+<!--<form action="checkbox" method="multiply" id="menu2">-->
+    <div>
+        <label>
+            Обрати вид транспорту
+            <select class="transport">
+                <option value="600">Авто (600 грн)</option>
+                <option value="1000">Автобус (1000 грн)</option>
+                <option value="2500">Літак (2500грн)</option>
+            </select>
+        </label>
+    </div>
+    <div>
+
+        Обрати харчування в дорогу <br>
+        <input type="checkbox" class="menu" name="Menu" value="120">Сніданок (120 грн)<br>
+        <input type="checkbox" class="menu" name="Menu" value="150">Обід (150грн)<br>
+        <input type="checkbox" class="menu" name="Menu" value="200">Вечеря (200 грн)<br>
+
+    </div>
+    <div>
+
+        Обрати гіда <br>
+        <input type="radio" class="guide" name="guide" value="500" checked> По музеям (500грн)<br>
+        <input type="radio" class="guide" name="guide" value="540"> По архітектурним пам'яткам (540 грн) <br>
+        <input type="radio" class="guide" name="guide" value="550"> По барам (550 грн)<br>
+
+        <div>
+            <h2>Подорож Чернігів - Суми</h2>
+        </div>
+        <div>
+            <label>
+                Обрати вид транспорту
+                <select class="transport">
+                    <option value="760">Авто (760 грн)</option>
+                    <option value="1300">Автобус (1300 грн)</option>
+                    <option value="2600">Літак (2600 грн)</option>
+                </select>
+            </label>
+        </div>
+        <div>
+
+            Обрати харчування в дорогу <br>
+            <input type="checkbox" class="menu" name="Menu" value="120">Сніданок (120 грн)<br>
+            <input type="checkbox" class="menu" name="Menu" value="150">Обід (150 грн)<br>
+            <input type="checkbox" class="menu" name="Menu" value="200">Вечеря (200 грн)<br>
+
+        </div>
+        <div>
+            Обрати гіда <br>
+            <input type="radio" class="guide" name="guide1" value="600"> По музеям (600 грн)<br>
+            <input type="radio" class="guide" name="guide1" value="440"> По архітектурним пам'яткам (440 грн)<br>
+            <input type="radio" class="guide" name="guide1" value="350" checked> По барам (350 грн)<br>
+        </div>
+        <div>
+            <h2>Подорож Суми - Черкаси</h2>
+        </div>
+        <div>
+            <label>
+                Обрати вид транспорту
+                <select class="transport">
+                    <option value="400">Авто (400 грн)</option>
+                    <option value="800">Автобус (800 грн)</option>
+                    <option value="2100">Літак (2100 грн)</option>
+                </select>
+            </label>
+        </div>
+        <div>
+
+            Обрати харчування в дорогу <br>
+            <input type="checkbox" class="Menu" name="Menu" value="220">Сніданок (220 грн)<br>
+            <input type="checkbox" class="Menu" name="Menu" value="250">Обід (250 грн)<br>
+            <input type="checkbox" class="Menu" name="Menu" value="300">Вечеря (300 грн)<br>
+
+        </div>
+        <div>
+
+            Обрати гіда <br>
+            <input type="radio" class="guide" name="guide2" value="600"> По музеям (600 грн)<br>
+            <input type="radio" class="guide" name="guide2" value="640" checked> По архітектурним пам'яткам (640 грн)<br>
+            <input type="radio" class="guide" name="guide2" value="650"> По барам (650 грн)<br>
+
+        </div>
+    </div>
+    <div>
+        <button>Загальна вартість</button>
+    </div>
+<div>Загальна вартість : <span id="result"></span></div>
+
+
+</body>
+</html>

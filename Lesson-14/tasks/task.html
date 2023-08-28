@@ -148,14 +148,11 @@
 
         let mostProductiveYear 
         let maxProfit = -Infinity;
-        for (const year of sitesProductionArray) { 
-            for (const {priceOfSite} of sitesProductionArray) {
+        for (const year of sitesProductionArray) {
                 if (year.priceOfSite > maxProfit) {
                     maxProfit = year.priceOfSite;
                     mostProductiveYear = year.yearOfProduction
                 }
-            }
-           
             }
         document.write(`Рік, коли прибуток був найбільшим: ${mostProductiveYear}<br> `)
         
@@ -167,27 +164,31 @@
 
 
         // Знайти: 7) Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000: (результат в console.log)
-
-        let lessThenThousand = []
-        let moreThenThousand = []
+        // Це не створює копію об'єктів
+        let lessThanThousand = []
+        let moreThanThousand = []
         for (const site of sitesProductionArray) {
             if(site.priceOfSite > 10000) {
-                moreThenThousand.push(site)
+                moreThanThousand.push(site)
             }else {
-                lessThenThousand.push(site)
+                lessThanThousand.push(site)
             }
         }
-        console.log(lessThenThousand, moreThenThousand)
+        console.log(lessThanThousand, moreThanThousand)
 
-        
-        
-      
+        // створює глибоку (?) копію об'єктів
+        let lessThanThousand1 = []
+        let moreThanThousand1 = []
+        for (const site of sitesProductionArray) {
+            if(site.priceOfSite > 10000) {
+                moreThanThousand1.push(JSON.parse(JSON.stringify(site)))
+            }else {
+                lessThanThousand1.push(JSON.parse(JSON.stringify(site)))
+            }
+        }
+        console.log(lessThanThousand1, moreThanThousand1)
+
 
     </script>
-    <script>
-    
-
-    </script>
-
 </body>
 </html>

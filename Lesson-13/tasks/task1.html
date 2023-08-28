@@ -27,6 +27,7 @@
                 if (array[middle] === searchElement) return middle
                 if (array[middle] < searchElement) return binarySearch(array, searchElement, middle + 1, end)
                 if (array[middle] > searchElement) return binarySearch(array, searchElement, start, middle - 1)
+                
                 }
         }
 

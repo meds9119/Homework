@@ -5,22 +5,49 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homework</title>
+    <script>
+        const euroCourse = 40
+        const dollarCourse = 35
+        const britishPoundCourse = 38
+
+        function getCurrencyConverter (uahSum, exchangeRate) {
+           return uahSum * exchangeRate;
+        }
+    
+        function convert() {
+            const hryvniaCurrency = parseFloat(document.getElementById('hryvnia').value)
+        
+            const eurCurrency = getCurrencyConverter(hryvniaCurrency, euroCourse)
+            const usdCurrency = getCurrencyConverter(hryvniaCurrency, dollarCourse)
+            const gbpCurrency = getCurrencyConverter(hryvniaCurrency, britishPoundCourse)
+           
+            document.getElementById('resultInputEur').value = eurCurrency.toFixed(2)
+            document.getElementById('resultInputUsd').value = usdCurrency.toFixed(2)
+            document.getElementById('resultInputGbp').value = gbpCurrency.toFixed(2)
+        }
+        window.onload = function () {
+            document.querySelector('button').onclick = convert
+          
+        }
+    </script>
 </head>
 <body>
     <p>
         Задача 2. Зробити конвертер валют (курси валют – константи у скрипті).
 
     </p>
-    <script>
-
-        
-      
-
-    </script>
-    <script>
+      <label>
+        Сума в гривнях
+        <input type="number" id='hryvnia' value="0" />
+      </label>
+      <div>
+        <button>Конвертувати</button>
+      </div>
+      <div>Сума в євро = </div> <input id="resultInputEur" type="number" placeholder="Result" />
+      <div>Сума в доларах = </div> <input id="resultInputUsd" type="number" placeholder="Result" />
+      <div>Сума в британських фунтах = </div> <input id="resultInputGbp" type="number" placeholder="Result" />
+     
     
-
-    </script>
 
 </body>
 </html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+</head>
+<body>
+<p>
+    Задача 1. Створити клас TDate для роботи із датами у форматі “день.місяць.рік”.
+    Дата представляється структурою із трьома полями. Реалізувати методи збільшення/зменшення дати на певну кількість
+    днів, місяців чи років. Введення та виведення дати реалізувати за допомогою методу toString.
+</p>
+<script>
+    'use strict'
+    class TDate {
+        constructor(day, month, year) {
+            this.day = day;
+            this.month = month;
+            this.year = year;
+        }
+
+        addDay(userAddDay) {
+            this.day += userAddDay
+            while (this.day > this.getDaysInMonth()) {
+                this.day -= this.getDaysInMonth()
+                this.month++;
+                if (this.month > 12) {
+                    this.month = 1
+                    this.year++
+                }
+            }
+        }
+        subtractDay(userSubDay) {
+            this.day -= userSubDay
+            while (this.day <= 0) {
+                this.month--;
+                if (this.month < 1) {
+                    this.month = 12
+                    this.year--
+                }
+                this.day += this.getDaysInMonth()
+            }
+        }
+        addMonth(userAddMonth) {
+            this.month += userAddMonth
+            while (this.month > 12) {
+                this.month -= 12
+                this.year++
+            }
+        }
+        subtractMonth(userSubMonth) {
+            this.month -= userSubMonth
+            while (this.month <= 0) {
+                this.year--
+                this.month += 12
+            }
+        }
+        addYear(userAddYear) {
+            this.year += userAddYear
+        }
+        subtractYear(userSubYear) {
+            this.year -= userSubYear
+        }
+
+        getDaysInMonth() {
+            let monthLengths = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+            if (this.month === 2 && this.isLeapYear()) {
+                return 29
+            }
+            return monthLengths[this.month - 1]
+        }
+        isLeapYear() {
+            return (this.year % 4 === 0 && this.year % 100 !== 0) || (this.year % 400 === 0);
+        }
+        toString() {
+            return `З урахуванням додавань та віднімань днів, дата: ${this.day}.${this.month}.${this.year}<br>`
+        }
+    }
+
+    let userAddDay = parseFloat(prompt(`Введіть скільки додати днів`))
+    let userSubDay = parseFloat(prompt(`Введіть скільки відняти днів`))
+    let userAddMonth = parseFloat(prompt(`Введіть скільки додати місяців`))
+    let userSubMonth = parseFloat(prompt(`Введіть скільки відняти місяців`))
+    let userAddYear = parseFloat(prompt(`Введіть скільки додати років`))
+    let userSubYear = parseFloat(prompt(`Введіть скільки відняти років`))
+
+    let date = new TDate(1, 1, 2023)
+    document.write(date.toString())
+
+    date.addDay(userAddDay)
+    document.write(date.toString())
+    date.subtractDay(userSubDay)
+    document.write(date.toString())
+
+    date.addMonth(userAddMonth)
+    document.write(date.toString())
+    date.subtractMonth(userSubMonth)
+    document.write(date.toString())
+
+    date.addYear(userAddYear)
+    document.write(date.toString())
+    date.subtractYear(userSubYear)
+    document.write(date.toString())
+</script>
+
+
+</body>
+</html>

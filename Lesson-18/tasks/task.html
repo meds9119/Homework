@@ -5,21 +5,78 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homework</title>
+    <script>
+       function getSum() {
+        const firstNum = parseInt(document.getElementById('first').value)
+        const secondNum = parseInt(document.getElementById('second').value)
+        const sum = firstNum + secondNum
+        document.getElementById('result').value = sum
+        document.getElementById('resText').innerText = `${firstNum} + ${secondNum} = ${sum}`
+      }
+       function getMultiply () {
+        const firstNum = parseInt(document.getElementById('first').value)
+        const secondNum = parseInt(document.getElementById('second').value)
+        const multiply = firstNum * secondNum
+        document.getElementById('result').value = multiply
+        document.getElementById('resText').innerText = `${firstNum} * ${secondNum} = ${multiply}`
+       }
+
+       function getDivision () {
+        const firstNum = parseInt(document.getElementById('first').value)
+        const secondNum = parseInt(document.getElementById('second').value)
+        const division = firstNum / secondNum
+        document.getElementById('result').value = division
+        document.getElementById('resText').innerText = `${firstNum} / ${secondNum} = ${division}`
+       }
+
+       function getSubtrack (){
+        const firstNum = parseInt(document.getElementById('first').value)
+        const secondNum = parseInt(document.getElementById('second').value)
+        const subtract = firstNum - secondNum
+        document.getElementById(`result`).value = subtract
+        document.getElementById(`resText`).innerText = `${firstNum} - ${secondNum} = ${subtract}`
+       }
+   </script>
 </head>
 <body>
     <p>
         Задача 1. Розробити калькулятор.
     </p>
-    <script>
-
-        
-      
-
-    </script>
-    <script>
     
-
-    </script>
-
-</body>
+    <label>
+      First number
+      <input
+        id="first"
+        type="number"
+        placeholder="Type first number here"
+        value="0"
+      />
+    </label>
+    <label>
+      Second number
+      <input
+        id="second"
+        type="number"
+        placeholder="Type second number here"
+        value="0"
+      />
+    </label>
+    <div>
+      <button onclick="getSum()">Додадати</button>
+    </div>
+    <div>
+      <button onclick="getMultiply()">Помножити</button>
+    </div>
+    <div>
+      <button onclick="getDivision()">Поділити</button>
+    </div>
+    <div>
+      <button onclick="getSubtrack()">Відняти</button>
+    </div>
+    <label>
+      Результат
+      <input id="result" type="number" placeholder="Result" />
+    </label>
+    <div id="resText"></div>
+  </body>
 </html>

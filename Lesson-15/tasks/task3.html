@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+</head>
+<body>
+    <p>
+        Задача 3. Розробити клас MultChecker для перевірки таблиці множення
+        1) Поля
+        - Число, яке перевіряємо (наприклад, перевірка частини таблиці множення на 7)
+        - Кількість правильних відповідей
+        - Кількість неправильних відповідей
+        2) Методи
+        - Генерування прикладу (метод випадковим чином визначає друге число, перше число фіксоване)
+        - Перевірка правильності вказаної відповіді
+        - render
+    </p>
+<script>
+    'use strict'
+    class MultChecker {
+        constructor(checkingNum) {
+            this.chekingNum = checkingNum;
+            this.countCorrectAnswers = 0;
+            this.countIncorectAnswers = 0;
+            this.generatedRandomNum = 0;
+        }
+
+        generationRandomNum () {
+            let min = 1, max = 10
+            this.generatedRandomNum = Math.floor(Math.random() * (max - min) + min)
+        }
+        generationExample () {
+            let userAnswer = parseInt(prompt(`Введіть вашу відповідь ${this.chekingNum} * ${this.generatedRandomNum} = `))
+            if (userAnswer === this.chekingNum * this.generatedRandomNum) {
+                alert(`Правильна відповідь`)
+                this.countCorrectAnswers++
+            }
+            else {
+                alert(`Неправильна відповідь`)
+                this.countIncorectAnswers++
+            }
+
+        }
+
+        render () {
+            document.write(`${this.countCorrectAnswers}`)
+            document.write(`${this.countIncorectAnswers}`)
+        }
+
+        toString () {
+            return ` Кількість правильних відповідей: ${this.countCorrectAnswers} <br>
+            Кількість неправильних відповідей: ${this.countIncorectAnswers} `
+        }
+
+    }
+
+    let mCh = new MultChecker(7)
+    mCh.generationRandomNum()
+    mCh.generationExample()
+    while (confirm(`Бажаєте продовжити?`) === true){
+        mCh.generationRandomNum()
+        mCh.generationExample()
+    }
+    document.write(mCh)
+
+</script>
+
+
+    
+    
+
+</body>
+</html>

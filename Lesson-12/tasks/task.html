@@ -21,7 +21,7 @@
          function getRandomNumber(length, min, max) {
             let array = []
                 for (let i = 0; i < length; i++) {
-                    let random = min + ( Math.floor(Math.random() * (max - min + 1) + min))
+                    let random = min + Math.floor(Math.random() * (max - min + 1) + min)
                     array.push(random)
                     
                 }

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+</head>
+<body>
+<p>
+    Задача 2. Створити об’єкт «Авто».
+    Авто:
+    1) Поля(властивості)
+    - Марка
+    - Розмір бака
+    - Кількість наявних літрів
+    - Кількість місць
+    - Кількість пасажирів
+    2) Методи (дії):
+    - Заправка на вказану кількість літрів
+    - Виведення кількості пасажирів
+    - Додавання пасажирів
+    - Висадка пасажирів
+</p>
+<script>
+    'use strict'
+    class Car {
+        constructor(brand, volumeLiters, availableLiters, seatsNum, passengersNum) {
+            this.brand = brand,
+                this.volumeLiters = volumeLiters,
+                this.availableLiters = availableLiters,
+                this.seatsNum = seatsNum,
+                this.passengersNum = passengersNum
+        }
+
+        gasStation() {
+            let different = 0
+            let userGasoline = parseFloat(prompt(`Введіть кількість літрів палива для заправки баку`))
+            different = this.volumeLiters - this.availableLiters
+            if (userGasoline > different)
+                alert(`У баку недостатньо місця для такої кількості палива`)
+            else {
+                this.availableLiters += userGasoline
+                alert(`Бак заправлено на ${userGasoline}л. Кількість наявних літрів в баці ${this.availableLiters} з ${this.volumeLiters}л.`)
+            }
+
+        }
+
+        showPassengers() {
+            console.log(`Кількість пассажирів в машині ${this.passengersNum}`)
+        }
+
+        addPassengers() {
+            let userPassengers = parseInt(prompt(`Введіть кількість пасажирів, яких ви хочете посадити в автомобіль`))
+            if (this.passengersNum + userPassengers <= this.seatsNum) {
+                this.passengersNum = userPassengers + this.passengersNum
+                alert(`Ласкаво просимо! Тепер в машині ${this.passengersNum} пасажирів.`)
+            } else
+                alert(`Машина повністю заповнена.`)
+        }
+
+        landPassengers() {
+            let userLandPassengers = parseInt(prompt(`Введіть скільки ви хочете висадити пасажирів?`))
+            if (this.passengersNum < userLandPassengers)
+                alert(`Стількох пасажирів нема в машині`)
+            else (this.passengersNum -= userLandPassengers)
+            alert(`${userLandPassengers} висадили з машини. Тепер в машині ${this.passengersNum} пасажирів.`)
+        }
+
+
+    }
+
+    let car1 = new Car(`КрАЗ`, 550, 200, 6, 2)
+    car1.gasStation()
+    car1.showPassengers()
+    car1.addPassengers()
+    car1.landPassengers()
+
+
+</script>
+
+
+</body>
+</html>

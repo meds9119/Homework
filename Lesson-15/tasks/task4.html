@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+</head>
+<body>
+    <p>
+        Задача 5. Розробити клас «Керівник танців»
+        1) Поля
+        - Масив імен хлопців
+        - Масив імен дівчат
+        2) Методи
+        - Метод випадкового вибору імені хлопця
+        - Метод випадкового вибору імені дівчини
+        - Метод виведення пари для танців
+        -  Метод run , який ініціює через кожні 5 секунд виведення нової пари для танців
+    </p>
+<script>
+    'use strict'
+    class Dance {
+        constructor(boysArray, girlsArray) {
+            this.boysArray = boysArray;
+            this.girlsArray = girlsArray;
+            this.boy = ``;
+            this.girl = ``;
+        }
+
+        getRandomBoysName () {
+            let randomBoysIndex = Math.floor(Math.random() * this.boysArray.length)
+            return this.boysArray[randomBoysIndex]
+
+        }
+
+        getRandomGirlsName () {
+            let randomGirlsIndex = Math.floor(Math.random() * this.girlsArray.length)
+            return this.girlsArray[randomGirlsIndex]
+
+        }
+
+        dancing () {
+            this.boy = this.getRandomBoysName()
+            this.girl = this.getRandomGirlsName()
+        }
+
+        run () {
+            setInterval(() => {this.dancing(); alert(`${this.boy} + ${this.girl}`)}, 5000)
+        }
+    }
+
+    let dance = new Dance ([`John`, `Jack`, `Steven`, `Andrew`, `Mark`], [`Carry`, `Stefany`, `Sarah`, `Mary`, `Lola`])
+    dance.run ()
+</script>
+    
+    
+
+</body>
+</html>

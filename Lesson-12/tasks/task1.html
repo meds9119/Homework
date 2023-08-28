@@ -52,7 +52,7 @@
                 }
                 rightIndex--;
 
-                for (let idx = rightIndex; idx < leftIndex; idx--) {
+                for (let idx = rightIndex; idx > leftIndex; idx--) {
                     if (array[idx] < array[idx - 1]) {
                         swap (array, idx, idx - 1)
                         counter++

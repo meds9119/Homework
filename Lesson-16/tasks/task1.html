@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+</head>
+<body>
+<p> ! Цю задачу розв'язали на 17 уроці, але я пропустила цей розв'зок і намагалась розв'язати самостійно.!
+
+    Задача 2. Створити клас TMoney для роботи з грошовими сумами. Сума повинна зберігатися у вигляді доларового
+    еквіваленту.
+    Реалізувати методи додавання/вилучення грошової маси, вказуючи необхідну суму у гривнях, та визначення курсу долара,
+    при якому сума у гривнях збільшиться на 100. Курс долара зберігати в окремому полі.
+</p>
+<script>
+    'use strict'
+
+    class TMoney {
+        constructor(sumInUSD, exchangeRateUSD, profit) {
+            this.sumInUSDBase = this.sumInUSD = sumInUSD;
+            this.increaseSumInUSD = 0;
+            this.reductionSumInUSD = 0;
+            this.exchangeRateUSD = exchangeRateUSD;
+            this.profit = profit;
+            this.expectedExchange = 0;
+        }
+
+        // функція-обмінник, на додавання
+        addMoney(investTheSumInUAH) {
+            this.sumInUSD += investTheSumInUAH / this.exchangeRateUSD
+            this.increaseSumInUSD += investTheSumInUAH
+        }
+
+        subMoney(withdrawTheSumInUAH) {
+            let newSum = this.sumInUSD - withdrawTheSumInUAH / this.exchangeRateUSD;
+            if (newSum <= 0) {
+                alert(`Недостатньо коштів для зняття зазначеної суми.`)
+            } else {
+                this.reductionSumInUSD += withdrawTheSumInUAH
+                this.sumInUSD = newSum
+            }
+        }
+
+        expectedToExchange() {
+            this.expectedExchange = (this.sumInUSD * this.exchangeRateUSD + this.profit) / this.sumInUSD
+        }
+
+        toString() {
+            return `Курс долару: ${this.exchangeRateUSD} UAH = 1 USD<br>
+            Початквой рахунок: ${this.sumInUSDBase.toFixed(2)} USD<br>
+            Сума всіх збільшень: ${this.increaseSumInUSD} UAH<br>
+            Сума всіх зменшень: ${this.reductionSumInUSD} UAH<br>
+            Очікуваний прибуток від грошових обмінів: ${this.expectedExchange.toFixed(2)} UAH<br>`
+        }
+    }
+
+    let investTheSumInUAH = parseFloat(prompt(`Введіть суму в гривнях, яку хочете покласти (буде конвертовано в долар USD по курсу)`))
+    let withdrawTheSumInUAH = parseFloat(prompt(`Введіть суму в гривнях, яку хочете зняти з доларового рахунку`))
+    let tm1 = new TMoney(100, 40, 100)
+
+    tm1.addMoney(investTheSumInUAH)
+
+    tm1.subMoney(withdrawTheSumInUAH)
+
+    tm1.expectedToExchange()
+    document.write(tm1.toString())
+
+
+
+</script>
+
+</body>
+</html>

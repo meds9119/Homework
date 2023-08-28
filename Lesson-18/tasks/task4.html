@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+    <script>
+    </script>
+</head>
+<body>
+<p>
+    Задача 5. Користувач задає кількість рядків і стовпців. Відобразити таблицю, у клітинках якої знаходяться числа 1,
+    2, 3, …
+
+</p>
+<script>
+    function createTable() {
+        const rowNum = parseInt(document.getElementById('rowNum').value)
+        const colNum = parseInt(document.getElementById('colNum').value)
+        const tableEl = document.createElement('table')
+        tableEl.setAttribute('border', '2px');
+        let number = 1
+        for (let i = 0; i < rowNum; i++) {
+            const trEl = document.createElement('tr')
+            for (let j = 0; j < colNum; j++) {
+                const tdEl = document.createElement('td')
+                tdEl.innerText = number++
+                trEl.append(tdEl)
+            }
+            tableEl.append(trEl)
+        }
+        document.body.append(tableEl)
+    }
+
+</script>
+
+<label>
+    <input id="rowNum" type="number" placeholder="Кількість рядків">
+</label>
+<label>
+    <input id="colNum" type="number" placeholder="Кількість стовпців">
+</label>
+<div>
+    <button onclick="createTable()">Створити таблицю</button>
+</div>
+
+
+</body>
+</html>

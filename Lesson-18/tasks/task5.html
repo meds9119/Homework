@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+    <script>
+        function getTable() {
+            const userCountInputs = parseInt(document.getElementById('userCountInput').value)
+            for (let i = 0; i < userCountInputs; i++) {
+                const countTable = document.createElement('input')
+                countTable.setAttribute('type', 'number')
+                countTable.setAttribute('class', 'score')
+                document.getElementById('tableScores').append(countTable)
+            }
+        }
+
+        function getAverageScore() {
+
+            const userScore = document.getElementsByClassName('score')
+            let sum = 0
+            for (const scores of userScore) {
+                sum += parseInt(scores.value)
+            }
+            let averageValue = sum / userScore.length
+            document.getElementById('resultAverageValue').innerText = averageValue.toFixed(2)
+        }
+
+
+    </script>
+</head>
+<body>
+<p>
+    Задача 6. Користувач задає кількість оцінок і натискає на кнопку «get table». В результаті формується таблиця з
+    input,
+    куди користувач вводить оцінки. Після цього натискає на кнопку “get sum” і знаходить середнє значення.
+</p>
+<label>
+    Price number
+    <input
+            id="userCountInput"
+            type="number"
+            placeholder="Type number input here"
+            value=""
+    />
+</label>
+<div>
+    <button onclick="getTable()">Get table</button>
+</div>
+<div id="tableScores"></div>
+<div>
+    <button onclick="getAverageScore()">Get sum</button>
+</div>
+<div id="resultAverageValue"></div>
+
+</body>
+</html>

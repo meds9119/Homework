@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+</head>
+<body>
+<p>
+    Задача 0. Дано два об’єкта. Обидва містять масив цілих чисел. При цьому у одному з них є функція знаходження суми,
+    а у іншому – функція для знаходження добутку тих, які знаходяться між заданими мінімальним і максимальних значенням.
+    Використати обидва методи стосовно обидвох об’єктів (використати call, apply)
+</p>
+<script>
+    'use strict'
+    let firstSomeObject = {
+        number: [7, 3, 34, 9, 10, 1, 39, 8],
+
+        getSum: function () {
+            let sum = 0
+            for (const number of this.number) {
+                sum += number
+            }
+            return sum
+        }
+    }
+    let secondSomeObject = {
+        number: [1, 3, 4, 50, 9, 2, 31, 18],
+
+        getMultiply: function (min, max) {
+            let mult = 1
+            for (let i = 0; i < this.number.length; i++) {
+                if (this.number[i] >= min && this.number[i] <= max) {
+                    mult *= this.number[i];
+                }
+            }
+            return mult
+        }
+    }
+
+    let sum = firstSomeObject.getSum()
+    console.log(sum)
+    let mult = secondSomeObject.getMultiply.call(firstSomeObject, 1, 30)
+    console.log(mult)
+
+    let sum2 = firstSomeObject.getSum.apply(secondSomeObject)
+    console.log(sum2)
+    let mult2 = secondSomeObject.getMultiply(1, 30)
+    console.log(mult2)
+
+</script>
+
+
+</body>
+</html>
