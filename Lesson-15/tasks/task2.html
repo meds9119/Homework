@@ -24,19 +24,19 @@
 </p>
 <script>
     'use strict'
+
     class Car {
         constructor(brand, volumeLiters, availableLiters, seatsNum, passengersNum) {
-            this.brand = brand,
-                this.volumeLiters = volumeLiters,
-                this.availableLiters = availableLiters,
-                this.seatsNum = seatsNum,
-                this.passengersNum = passengersNum
+            this.brand = brand;
+            this.volumeLiters = volumeLiters;
+            this.availableLiters = availableLiters;
+            this.seatsNum = seatsNum;
+            this.passengersNum = passengersNum;
         }
 
         gasStation() {
-            let different = 0
             let userGasoline = parseFloat(prompt(`Введіть кількість літрів палива для заправки баку`))
-            different = this.volumeLiters - this.availableLiters
+            let different = this.volumeLiters - this.availableLiters
             if (userGasoline > different)
                 alert(`У баку недостатньо місця для такої кількості палива`)
             else {

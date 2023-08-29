@@ -20,9 +20,117 @@
     виведення на екран послуг, що можуть бути виконані за вказану суму грошей та вказаний термін часу;
 </p>
 <script>
-    let company = {
+    class Company {
+        constructor(nameCompany, baseDateYear, baseDateMonth) {
+            this.nameCompany = nameCompany;
+            this.baseDateYear = baseDateYear;
+            this.baseDateMonth = baseDateMonth;
+            this.existenceFirm = 0;
+            this.services = [];
+            this.addressesOfBranches = [];
+            this.useOfServices = [];
+            this.branchesByCity = [];
+        }
+
+        addServices(service) {
+            this.services.push(service)
+        }
+
+        addAddressOfBranches(addressOfBranches) {
+            this.addressesOfBranches.push(addressOfBranches)
+        }
+
+        yearsOfExistenceFirm(currentYear) {
+            return this.existenceFirm = currentYear - this.baseDateYear
+        }
+
+        branchesByCityList(userCity) {
+            for (const branch of this.addressesOfBranches) {
+                if (userCity === branch.city)
+                    this.branchesByCity.push(branch)
+            }
+            return this.branchesByCity
+        }
+
+        finishUseOfServices(userMoney, userTime) {
+            for (const service of this.services) {
+                if (userMoney >= service.costService && userTime >= service.deadlineService) {
+                    this.useOfServices.push(service)
+                }
+            }
+            return this.useOfServices
+
+        }
+
+
+        toString() {
+            return `Фірма: ${this.nameCompany}<br>
+                    Дата заснування: ${this.baseDateYear} рік,${this.baseDateMonth} місяць<br>
+                    Час існування фірми: ${this.existenceFirm} роки<br>
+                    Послуги: ${this.services}<br>
+                    Адреси філіалів: ${this.addressesOfBranches}<br>
+                    Доступні послуги по ціні та часу: ${this.useOfServices}<br>
+                    Доступні філіали по назві міста: ${this.branchesByCity}<br>`
+        }
+    }
+
+    class Services {
+        constructor(nameService, costService, deadlineService) {
+            this.nameService = nameService;
+            this.costService = costService;
+            this.deadlineService = deadlineService;
+        }
+
+
+        toString() {
+            return `<br> Назва: ${this.nameService}, вартість: ${this.costService} грн, час виконання: ${this.deadlineService} хв.`
+        }
 
     }
+
+    class AddressesOfBranches {
+        constructor(country, city, street, houseNumber) {
+            this.country = country;
+            this.city = city;
+            this.street = street;
+            this.houseNumber = houseNumber;
+        }
+
+        toString() {
+            return `<br> Країна: ${this.country}, місто: ${this.city}, вулиця: ${this.street}, ${this.houseNumber}`
+        }
+    }
+
+    const currentYear = 2023
+    let userMoney = parseFloat(prompt(`Вкажіть скільки маєте грошей і ми підберемо вам послугу (в гривнях)`))
+    let userTime = parseInt(prompt(`Вкажіть скільки часу ви маєте і ми підберемо послуги, які можна виконати за цей час(в хвилинах)`))
+    let userCity = prompt(`Введіть назву міста для пошуку філіалу`)
+
+    let company = new Company(`АВК`, 1991, 10)
+
+    let services = new Services(`Тістечко`, 500, 160)
+    let services2 = new Services(`Цукерки`, 230, 375)
+    let services3 = new Services(`Торт`, 405, 235)
+
+    company.addServices(services)
+    company.addServices(services2)
+    company.addServices(services3)
+
+    let addressesOfBranches = new AddressesOfBranches(`Україна`, `Дніпро`, `Дніпровська набережна`, 12)
+    let addressesOfBranches2 = new AddressesOfBranches(`Україна`, `Київ`, `Межигірська`, 82)
+    let addressesOfBranches3 = new AddressesOfBranches(`Україна`, `Львів`, `Львівська`, 33)
+
+    company.addAddressOfBranches(addressesOfBranches)
+    company.addAddressOfBranches(addressesOfBranches2)
+    company.addAddressOfBranches(addressesOfBranches3)
+
+
+    company.yearsOfExistenceFirm(currentYear)
+    company.branchesByCityList(userCity)
+    company.finishUseOfServices(userMoney, userTime)
+
+    document.write(company.toString())
+
 
 </script>
 
