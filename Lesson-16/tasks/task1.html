@@ -32,7 +32,7 @@
             this.sumInUSD += investTheSumInUAH / this.exchangeRateUSD
             this.increaseSumInUSD += investTheSumInUAH
         }
-
+        // функція-обмінник, на віднімання
         subMoney(withdrawTheSumInUAH) {
             let newSum = this.sumInUSD - withdrawTheSumInUAH / this.exchangeRateUSD;
             if (newSum <= 0) {
@@ -43,8 +43,8 @@
             }
         }
 
-        expectedToExchange() {
-            this.expectedExchange = (this.sumInUSD * this.exchangeRateUSD + this.profit) / this.sumInUSD
+        getExpectedToExchange() {
+            return this.expectedExchange = (this.sumInUSD * this.exchangeRateUSD + this.profit) / this.sumInUSD
         }
 
         toString() {
@@ -64,7 +64,7 @@
 
     tm1.subMoney(withdrawTheSumInUAH)
 
-    tm1.expectedToExchange()
+    tm1.getExpectedToExchange()
     document.write(tm1.toString())
 
 

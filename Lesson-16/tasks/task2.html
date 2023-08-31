@@ -40,11 +40,11 @@
             this.addressesOfBranches.push(addressOfBranches)
         }
 
-        yearsOfExistenceFirm(currentYear) {
+        getYearsOfExistenceFirm(currentYear) {
             return this.existenceFirm = currentYear - this.baseDateYear
         }
 
-        branchesByCityList(userCity) {
+        getBranchesByCityList(userCity) {
             for (const branch of this.addressesOfBranches) {
                 if (userCity === branch.city)
                     this.branchesByCity.push(branch)
@@ -52,7 +52,7 @@
             return this.branchesByCity
         }
 
-        finishUseOfServices(userMoney, userTime) {
+        getFinishUseOfServices(userMoney, userTime) {
             for (const service of this.services) {
                 if (userMoney >= service.costService && userTime >= service.deadlineService) {
                     this.useOfServices.push(service)
@@ -125,9 +125,9 @@
     company.addAddressOfBranches(addressesOfBranches3)
 
 
-    company.yearsOfExistenceFirm(currentYear)
-    company.branchesByCityList(userCity)
-    company.finishUseOfServices(userMoney, userTime)
+    company.getYearsOfExistenceFirm(currentYear)
+    company.getBranchesByCityList(userCity)
+    company.getFinishUseOfServices(userMoney, userTime)
 
     document.write(company.toString())
 
