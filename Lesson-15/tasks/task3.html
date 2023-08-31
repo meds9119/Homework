@@ -32,8 +32,7 @@
             let min = 1, max = 10
             this.generatedRandomNum = Math.floor(Math.random() * (max - min) + min)
         }
-        generationExample () {
-            let userAnswer = parseInt(prompt(`Введіть вашу відповідь ${this.chekingNum} * ${this.generatedRandomNum} = `))
+        generationExample (userAnswer) {
             if (userAnswer === this.chekingNum * this.generatedRandomNum) {
                 alert(`Правильна відповідь`)
                 this.countCorrectAnswers++
@@ -57,13 +56,15 @@
 
     }
 
+
     let mCh = new MultChecker(7)
     mCh.generationRandomNum()
-    mCh.generationExample()
-    while (confirm(`Бажаєте продовжити?`) === true){
+
+    do {
         mCh.generationRandomNum()
-        mCh.generationExample()
-    }
+        let userAnswer = parseInt(prompt(`Введіть вашу відповідь ${mCh.chekingNum} * ${mCh.generatedRandomNum} = `))
+        mCh.generationExample(userAnswer)
+    }while (confirm(`Бажаєте продовжити?`) === true)
     document.write(mCh.toString())
 
 </script>

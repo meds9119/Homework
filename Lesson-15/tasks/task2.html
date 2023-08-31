@@ -34,8 +34,7 @@
             this.passengersNum = passengersNum;
         }
 
-        gasStation() {
-            let userGasoline = parseFloat(prompt(`Введіть кількість літрів палива для заправки баку`))
+        gasStation(userGasoline) {
             let different = this.volumeLiters - this.availableLiters
             if (userGasoline > different)
                 alert(`У баку недостатньо місця для такої кількості палива`)
@@ -50,8 +49,7 @@
             console.log(`Кількість пассажирів в машині ${this.passengersNum}`)
         }
 
-        addPassengers() {
-            let userPassengers = parseInt(prompt(`Введіть кількість пасажирів, яких ви хочете посадити в автомобіль`))
+        addPassengers(userPassengers) {
             if (this.passengersNum + userPassengers <= this.seatsNum) {
                 this.passengersNum = userPassengers + this.passengersNum
                 alert(`Ласкаво просимо! Тепер в машині ${this.passengersNum} пасажирів.`)
@@ -59,22 +57,22 @@
                 alert(`Машина повністю заповнена.`)
         }
 
-        landPassengers() {
-            let userLandPassengers = parseInt(prompt(`Введіть скільки ви хочете висадити пасажирів?`))
+        landPassengers(userLandPassengers) {
             if (this.passengersNum < userLandPassengers)
                 alert(`Стількох пасажирів нема в машині`)
             else (this.passengersNum -= userLandPassengers)
             alert(`${userLandPassengers} висадили з машини. Тепер в машині ${this.passengersNum} пасажирів.`)
         }
-
-
     }
+    let userGasoline = parseFloat(prompt(`Введіть кількість літрів палива для заправки баку`))
+    let userPassengers = parseInt(prompt(`Введіть кількість пасажирів, яких ви хочете посадити в автомобіль`))
+    let userLandPassengers = parseInt(prompt(`Введіть скільки ви хочете висадити пасажирів?`))
 
     let car1 = new Car(`КрАЗ`, 550, 200, 6, 2)
-    car1.gasStation()
+    car1.gasStation(userGasoline)
     car1.showPassengers()
-    car1.addPassengers()
-    car1.landPassengers()
+    car1.addPassengers(userPassengers)
+    car1.landPassengers(userLandPassengers)
 
 
 </script>
