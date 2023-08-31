@@ -58,12 +58,12 @@
         }
 
         landPassengers(userLandPassengers) {
-            if (this.passengersNum < userLandPassengers)
+            if (this.passengersNum < userLandPassengers) {
                 alert(`Стількох пасажирів нема в машині`)
-            else (this.passengersNum -= userLandPassengers)
-            alert(`${userLandPassengers} висадили з машини. Тепер в машині ${this.passengersNum} пасажирів.`)
+            } else (this.passengersNum -= userLandPassengers)
         }
     }
+
     let userGasoline = parseFloat(prompt(`Введіть кількість літрів палива для заправки баку`))
     let userPassengers = parseInt(prompt(`Введіть кількість пасажирів, яких ви хочете посадити в автомобіль`))
     let userLandPassengers = parseInt(prompt(`Введіть скільки ви хочете висадити пасажирів?`))
