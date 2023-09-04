@@ -9,12 +9,56 @@
 <body>
 <p>
     Створити клас Нагадувач. Кожні вказані кількості секунд (використати setInterval) програма нагадує про якусь подію
-    (це просто текст) і також виводиться порядковий номер скільки раз вже нагадування було. Зробити так, щоб неможна
-    було зробити одночасно декілька об’єктів-нагадувачів. Методи зупинки таймера, метод зміни повідомлення без зупинки таймера.
+    (це просто текст) і також виводиться порядковий номер скільки раз вже нагадування було.
+    Зробити так, щоб не можна було зробити одночасно декілька об’єктів-нагадувачів.
+    Методи зупинки таймера, метод зміни повідомлення без зупинки таймера.
 
 </p>
 <script>
     'use strict'
+
+    class Remainder {
+        static remainderRef
+
+        constructor(event, changeEvent) {
+            if (Remainder.remainderRef)
+                return Remainder.remainderRef
+
+            this.event = event;
+            this.eventCount = 0;
+            this.changeEvent = changeEvent;
+
+            Remainder.remainderRef = this;
+        }
+
+        run() {
+            this.run = setInterval(() => {
+                this.eventCount++;
+                document.write(`${this.eventCount}. ${this.event}`)
+                document.write(`<br>`)
+            }, 1000)
+        }
+
+        stopRun() {
+            setTimeout(() => {
+                clearInterval(this.run)
+            }, 6000)
+        }
+
+        changeEventWithoutStopRun() {
+            setTimeout(() => {
+                this.event = this.changeEvent
+            }, 3000)
+        }
+
+    }
+
+    let rem = new Remainder(`Set an alarm!`, `Water the flowers`)
+    rem.run()
+    rem.stopRun()
+    rem.changeEventWithoutStopRun()
+
+
 
 
 </script>

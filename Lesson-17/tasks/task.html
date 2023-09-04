@@ -8,12 +8,63 @@
 </head>
 <body>
 <p>
-    Створити клас, що дозволяє виконувати такі операції над масивами: знаходження кількості додатних, кількості від’ємних,
+    Створити клас, що дозволяє виконувати такі операції над масивами: знаходження кількості додатних, кількості
+    від’ємних,
     кількість входжень деякого числа (статичні методи)
-
 </p>
 <script>
     'use strict'
+
+    class Inspect {
+
+        static getFindCountPositive(array) {
+            let positiveCount = 0
+            for (const number of array) {
+                if (number >= 0) {
+                    positiveCount++;
+                }
+            }
+            return positiveCount
+        }
+
+        static getFindCountNegative(array) {
+            let negativeCount = 0
+            for (const number of array) {
+                if (number <= 0) {
+                    negativeCount++;
+                }
+            }
+            return negativeCount
+        }
+
+        static getFindCountTargetNumber(targetNumber, array) {
+            let targetNumberCount = 0
+            for (const number of array) {
+                if (number === targetNumber) {
+                    targetNumberCount++;
+                }
+
+            }
+            return targetNumberCount
+
+        }
+        toString () {
+            return `${Inspect.getFindCountPositive()}`
+        }
+    }
+
+    let someArray1 = [3, -4, 56, -18, 30, -45, 13, 8, 30, -7, 31, 30]
+    let someArray2 = [-54, 91, -30, 2, -7, 8, 0, 30, -1, 2, 30, 2, 3, 30, 30]
+    const targetNumber = 30
+
+    console.log(Inspect.getFindCountPositive(someArray1))
+    console.log(Inspect.getFindCountPositive(someArray2))
+
+    console.log(Inspect.getFindCountNegative(someArray1))
+    console.log(Inspect.getFindCountNegative(someArray2))
+
+    console.log(Inspect.getFindCountTargetNumber(targetNumber, someArray1))
+    console.log(Inspect.getFindCountTargetNumber(targetNumber, someArray2))
 
 
 </script>

@@ -8,13 +8,175 @@
 </head>
 <body>
 <p>
-    Особиста бібліотека. Картотека домашньої бібліотеки: дані книги (автори (піб, рік народження, короткий опис),
-    назва книги, жанр, видавництво (назва, реєстраційний номер, рік засування)). Реалізувати розділи бібліотеки
-    організувати додавання/вилучення книг та  вибір книг за назвою, за ПІБ автора, за видавництвом.
+    Особиста бібліотека.
+    Картотека домашньої бібліотеки:
+    * дані книги *
+    - автори (піб, рік народження, короткий опис),
+    - назва книги,
+    - жанр,
+    - видавництво (назва, реєстраційний номер, рік засування)).
+    Реалізувати розділи бібліотеки:
+    * організувати *
+    - додавання
+    - вилучення книг
+    * вибір книг за *
+    - назвою
+    - за ПІБ автора
+    - за видавництвом
 
 </p>
 <script>
     'use strict'
+
+    class Authors {
+        constructor(authorName, dateOfBirth, description) {
+            this.authorName = authorName;
+            this.dateOfBirth = dateOfBirth;
+            this.description = description;
+        }
+        toString() {
+            return `authors date of birth: ${this.dateOfBirth} year, short description: ${this.description}`
+        }
+    }
+
+    class Publishing {
+        constructor(publishingName, registrationNumber, foundationYear) {
+            this.publishingName = publishingName;
+            this.registrationNumber = registrationNumber;
+            this.foundationYear = foundationYear;
+        }
+
+        toString() {
+            return `registration number of book: ${this.registrationNumber}, foundation year: ${this.foundationYear}<br>`
+        }
+    }
+
+    class Books {
+        constructor(title, genre) {
+            this.title = title;
+            this.genre = genre;
+            this.authors = [];
+            this.publishing = [];
+        }
+
+        addAuthors(author) {
+            this.authors.push(author)
+
+        }
+
+        addPublishing(publishing) {
+            this.publishing.push(publishing)
+        }
+
+        toString() {
+            return `Title: ${this.title}, genre: ${this.genre}, authors: ${this.authors}, publishing house: ${this.publishing}`
+        }
+    }
+
+    class PersonalLibrary {
+        constructor() {
+            this.books = [];
+        }
+
+        addBooks(book) {
+            this.books.push(book)
+        }
+
+        removeBooks(bookKey) {
+            this.books = this.books.filter((book, index) => index !== bookKey)
+        }
+
+        getSelectionBookByTitle(title) {
+            return this.books.filter(book => book.title === title)
+        }
+
+        getSelectionBookByAuthors(authorName) {
+            let searchResult = []
+            for (const book of this.books) {
+                for (const author of book.authors) {
+                    if (author.authorName === authorName) {
+                        searchResult.push(book)
+                    }
+                }
+            }
+            return searchResult
+        }
+
+        getSelectionBookByPublishing(publishingName) {
+            let searchResult = [];
+            for (const book of this.books) {
+                for (const publishing of book.publishing) {
+                    if (publishing.publishingName === publishingName) {
+                        searchResult.push(book)
+                    }
+                }
+            }
+            return searchResult
+        }
+
+        toString() {
+            return `Personal library: <br> ${this.books}`
+        }
+    }
+    // Вводимо самі книги до окремого класу Books
+    let bk = new Books(`Kobzar`, `poetry`)
+    let bk1 = new Books(`Marusya Churay`, `historical novel`)
+    let bk2 = new Books(`Na krylah pisen`, `poetry`)
+    let bk3 = new Books(`Kaydasheva simya`, `socially everyday novel`)
+    let bk4 = new Books(`Moment evryky`, `psychology`)
+
+    // Вводимо інформацію про книги (автор та його дані) до окремого класу Authors
+    let auth = new Authors(`Taras Shevchenko`, 1814, `collection of poetic and ballads works`)
+    let auth1 = new Authors(`Lina Kostenko`, 1930, `historical novel in poems about a famous ukrainian songstress`)
+    let auth2 = new Authors(`Lesya Ukrainka`, 1871, `the first collection of poetic works`)
+    let auth3 = new Authors(`Ivan Nechuy-Levitskiy`, 1838, `realistic socially everyday novel with a series of tragicomic situation`)
+    let auth4 = new Authors(`Jhon Konius`, 1970, `socially psychology`)
+    let auth5 = new Authors(`Mark Biman`, 1975, `socially psychology`)
+
+    // Вводимо інформацію про книги (видавництво та його дані) до окремого класу Publishing
+    let publish = new Publishing(`Krynytsya`, 12321, 1840)
+    let publish1 = new Publishing(`Podillya`, 212121, 1979)
+    let publish2 = new Publishing(`Vydavnytstvo`, 100020, 1893)
+    let publish3 = new Publishing(`Pravda`, 177100, 1879)
+    let publish4 = new Publishing(`Pravda`, 279100, 2000)
+
+    // Прив'язка класів Authors і Publishing до підголовного класу Books
+    bk.addAuthors(auth)
+    bk.addAuthors(auth)
+    bk1.addAuthors(auth1)
+    bk2.addAuthors(auth2)
+    bk3.addAuthors(auth3)
+    bk4.addAuthors(auth4)
+    bk4.addAuthors(auth5)
+
+    bk.addPublishing(publish)
+    bk1.addPublishing(publish1)
+    bk2.addPublishing(publish2)
+    bk3.addPublishing(publish3)
+    bk4.addPublishing(publish4)
+
+    // Головний клас Library (Бібліотека), який тепер має в собі книги з усією інформацією
+    let library = new PersonalLibrary()
+    library.addBooks(bk)
+    library.addBooks(bk1)
+    library.addBooks(bk2)
+    library.addBooks(bk3)
+    library.addBooks(bk4)
+
+    document.write(library.toString())
+
+    // Виклик функцій. Вивід результату в консоль
+    library.removeBooks(2)
+    console.log(library)
+
+    let result = library.getSelectionBookByTitle(`Kobzar`)
+    console.log(result)
+
+    result = library.getSelectionBookByAuthors(`Mark Biman`)
+    console.log(result)
+
+    result = library.getSelectionBookByPublishing(`Pravda`)
+    console.log(result)
 
 
 </script>

@@ -14,6 +14,24 @@
 </p>
 <script>
     'use strict'
+    class CompanyCar {
+        static companyCarRef
+        constructor(driver, brand, carNumber) {
+            if (CompanyCar.companyCarRef)
+                return CompanyCar.companyCarRef
+
+            this.driver = driver;
+            this.brand = brand;
+            this.carNumber = carNumber;
+
+            CompanyCar.companyCarRef = this;
+        }
+        toString () {
+            return `Driver: ${this.driver}, brand car: ${this.brand}, car number: ${this.carNumber}`
+        }
+    }
+    let car = new CompanyCar (`Ivan`, `Jeep`, `GP20I`)
+    document.write(car.toString())
 
 
 </script>
