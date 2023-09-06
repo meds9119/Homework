@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+</head>
+<body>
+<p>
+    Задача 4. Дано 3 таблиці розмірності 3*3 з випадковими числами. Якщо відбувається клік на якійсь із клітинок, то до
+    відповідної таблиці додається червона рамка (спробуйте додати можливість відображення кількості кліків біля назви
+    таблиці з використанням відповідно доданого для цього атрибута).
+</p>
+<div id="tableList">
+
+</div>
+<script>
+    const tableClicks = [0, 0, 0]
+
+    class RandomList {
+        constructor(id) {
+            this.id = id
+        }
+
+        randomCountElement(min, max) {
+            return Math.floor(Math.random() * (max - min) + min)
+        }
+
+        render() {
+            let table = document.createElement('table')
+            table.id = this.id
+            for (let i = 0; i < 3; i++) {
+                let tr = document.createElement('tr')
+                for (let j = 0; j < 3; j++) {
+                    let td = document.createElement(`td`)
+                    td.innerText = this.randomCountElement(1, 100).toString()
+                    tr.appendChild(td)
+                }
+                table.appendChild(tr)
+
+            }
+            document.getElementById(`tableList`).append(table)
+            let counter = document.createElement('p')
+            counter.id = `click_counter_${this.id}`
+            counter.innerText = `Кліків 0`
+            document.getElementById(`tableList`).append(counter)
+
+            table.onclick = function () {
+                tableClicks[this.id]++
+                this.classList.toggle(`active`)
+                document.getElementById(`click_counter_${this.id}`).innerText = `Кліків ${tableClicks[this.id]}`
+            }
+        }
+
+
+    }
+
+    let rl = new RandomList(0)
+    rl.render()
+
+    let rl2 = new RandomList(1)
+    rl2.render()
+
+    let rl3 = new RandomList(2)
+    rl3.render()
+
+</script>
+<style>
+    .active {
+        border: 3px solid red;
+        display: block;
+        width: 70px;
+    }
+</style>
+
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+</head>
+<body>
+<p>
+    Задача 3. Дано 5 випадковим чином згенерованих нумерованих списків з рандомними числами (кількість елементів у
+    списку
+    випадкова від 1 до 10, елементи випадкові – від 1 до 100). При натисненні на кнопку нумеровані списки з парною
+    кількістю елементів зафарбувати у зелений колір, інші у червоний.
+</p>
+<div id="olList">
+
+</div>
+<script>
+    "use strict"
+
+    class RandomList {
+        randomCountElement(min, max) {
+            return Math.floor(Math.random() * (max - min) + min)
+        }
+
+        render() {
+            for (let i = 0; i < 5; i++) {
+                let olList = document.createElement(`ol`)
+                olList.classList.add('olList')
+                let liList = this.randomCountElement(1, 10)
+                for (let j = 0; j < liList; j++) {
+                    let liEl = document.createElement(`li`)
+                    liEl.innerText = this.randomCountElement(1, 100).toString()
+                    olList.appendChild(liEl)
+                }
+
+                document.getElementById(`olList`).append(olList)
+
+            }
+        }
+
+        renderButton() {
+            let btn = document.createElement(`button`)
+            btn.innerText = `button`
+            btn.onclick = function () {
+                let olList = document.getElementsByClassName('olList')
+                for (const ol of olList) {
+                    if (ol.childElementCount % 2 === 0) {
+                        ol.style.backgroundColor = `green`
+                    } else ol.style.backgroundColor = `red`
+
+                }
+            }
+            document.getElementById(`olList`).append(btn)
+        }
+    }
+
+    let rl = new RandomList()
+    rl.render()
+    rl.renderButton()
+
+
+</script>
+
+
+</body>
+</html>

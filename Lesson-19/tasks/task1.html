@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+
+</head>
+<body>
+<p>
+    Задача 2. Дано 5 елементів input. При введенні значення у якийсь із них необхідно автоматично заповнювати інші
+    (усі попередні у спадному порядку(кожен попередній має значення на 1 менше за наступний), усі наступні на 1 більше
+    (кожен наступне на 1 більше за попереднього)
+</p>
+<div>
+    <input class="data">
+
+    <input class="data">
+
+    <input class="data">
+
+    <input class="data">
+
+    <input class="data">
+
+</div>
+
+<script>
+    let inputs = document.getElementsByClassName('data')
+    for (const input of inputs) {
+        input.oninput = function () {
+            let inp = this.previousElementSibling
+            let currentValue = this.value
+            while (inp) {
+                inp.value = --currentValue
+                inp = inp.previousElementSibling;
+            }
+            inp = this.nextElementSibling
+            currentValue = this.value
+            while (inp) {
+                inp.value = ++currentValue
+                inp = inp.nextElementSibling
+            }
+
+        }
+    }
+
+
+</script>
+</body>
+</html>
