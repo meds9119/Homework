@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+    <script>
+    </script>
+</head>
+<body>
+<p>
+    Задача 3. На формі вводять 7 числових значень (вік, зріст, вага, заробітна плата, стаж, номер відділу, порядковий
+    номер).
+    Додати подію обробки події click на форму і якщо клік на внутрішньому input, то автоматично замінювати значення його
+    на 0.
+    Використати делегування
+</p>
+<div id="divList">
+    1. Вік <input type="number" class="inp" value=""><br>
+    2. Зріст <input type="number" class="inp" value=""><br>
+    3. Вага <input type="number" class="inp" value=""><br>
+    4. Заробітна плата <input class="inp" type="number" value=""><br>
+    5. Стаж <input type="number" class="inp" value=""><br>
+    6. Номер відділу <input class="inp" type="number" value=""><br>
+    7. Порядковий номер <input class="inp" type="number" value=""><br>
+</div>
+<script>
+    const divList = document.getElementById(`divList`)
+
+    divList.addEventListener(`click`, function (event) {
+        if (event.target.tagName === `INPUT`) {
+            event.target.value = 0
+        }
+    })
+
+    // classList.contains('inp') (on if())
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+    <script>
+    </script>
+</head>
+<body>
+<p>
+    Задача. Динамічний пошук. Є список працівників і поле пошуку. При введенні відображаються усі, які містять вказаний
+    фрагмент
+</p>
+<div>
+    <input type="text" id="search" placeholder="Search">
+    <ul>
+        <li class="element">Jack</li>
+        <li class="element">Mary</li>
+        <li class="element">Lola</li>
+        <li class="element">Andrew</li>
+        <li class="element">Sarah</li>
+        <li class="element">Diana</li>
+        <li class="element">Albert</li>
+        <li class="element">Inness</li>
+    </ul>
+</div>
+
+<script>
+    const search = document.getElementById(`search`)
+
+    search.addEventListener(`keyup`, function () {
+        let elements = document.getElementsByClassName('element')
+        for (const element of elements) {
+            if(element.innerText.toLowerCase().indexOf(this.value.toLowerCase()) === -1) {
+                element.style.display = 'none'
+            }else {
+                element.style.display = 'block'
+            }
+        }
+    })
+
+</script>
+
+
+</body>
+</html>

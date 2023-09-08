@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+    <script>
+    </script>
+</head>
+<body>
+<p>
+    Задача 4. На сторінці міститься певна кількість кнопок і інпутів. Підраховувати загальну кількість кліків окремо
+    на кнопках і окремо на інпутах.
+</p>
+<div id="buttonList">
+    <button>1</button>
+    <br>
+    <button>2</button>
+    <br>
+    <button>3</button>
+    <br>
+    <button>4</button>
+    <br>
+    <button>5</button>
+</div>
+<br>
+<br>
+<div id="inputList">
+    1 <input type="text"> <br>
+    2 <input type="text"> <br>
+    3 <input type="text"> <br>
+    4 <input type="text"> <br>
+    5 <input type="text"> <br>
+</div>
+<div id="textContent">
+</div>
+<div id="textContent1">
+</div>
+
+<script>
+    "use strict"
+    const buttonList = document.getElementById('buttonList')
+    const inputList = document.getElementById(`inputList`)
+    let buttonClickCount = 0
+    let inputClickCount = 0
+
+    buttonList.addEventListener(`click`, function (event) {
+        if (event.target.tagName === `BUTTON`) {
+            buttonClickCount++
+        }
+        textContent.innerText = `Click on button: ${buttonClickCount}`
+    })
+    inputList.addEventListener(`click`, function (event) {
+        if (event.target.tagName === `INPUT`) {
+            inputClickCount++
+        }
+        textContent1.innerText = `Click on input: ${inputClickCount}`
+    })
+</script>
+
+
+</body>
+</html>

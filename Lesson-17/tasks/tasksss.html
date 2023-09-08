@@ -8,7 +8,8 @@
 </head>
 <body>
 <p>
-    Дано два класи MultChecker (клас для перевірки таблиці множення - рандомно генеруються числа, які треба перемножати),
+    Дано два класи MultChecker (клас для перевірки таблиці множення - рандомно генеруються числа, які треба
+    перемножати),
     AddChecker (клас для перевірки додавання - рандомно генеруються числа у заданому діапазоні, які треба додавати).
     Обидва класи надсилають результати тестування об'єкту класу History, який зберігає історію тестування у масиві
     у вигляді об'єктів
@@ -20,7 +21,7 @@
     Можна створити окремий клас TestData, який описує один такий тест і у якому будуть ці поля.
     Розробити клас TestManager, який використовуючи ці класи за допомогою таймера періодично генерує якісь N задач
     (рандомно вибираємо, що опитувати: додавання чи множення) і проводить опитування. Результати тестування додаються
-    в об’єкт History.  Зробити так, щоб об'єкт такого класу можна було створити тільки один. Коли зроблено ці N задач
+    в об’єкт History. Зробити так, щоб об'єкт такого класу можна було створити тільки один. Коли зроблено ці N задач
     вивести усю історію на екран.
 
 </p>
@@ -29,27 +30,67 @@
 
     class MultChecker {
         constructor() {
+            this.randomNum = 0;
+            this.example = 0;
         }
-        static getGenerationRandomNum (min, max) {
-            return Math.floor(Math.random() * (max - min) + min)
+
+        generationRandomNum(min, max) {
+            this.randomNum = Math.floor(Math.random() * (max - min) + min)
         }
-        generationExample () {
-           let example = MultChecker.getGenerationRandomNum() * MultChecker.getGenerationRandomNum()
+
+        generationExample() {
+            this.example = this.randomNum * this.randomNum
+
         }
 
 
     }
+
     class AddChecker {
+        constructor() {
+            this.randomNum = 0;
+            this.example = 0;
+        }
+        generationRandomNum(min, max) {
+            this.randomNum = Math.floor(Math.random() * (max - min) + min)
+        }
+
+        generationExample() {
+            this.example = this.randomNum + this.randomNum
+
+        }
+    }
+
+    class TestData {
         constructor() {
         }
     }
+
+    class History {
+        constructor() {
+            this.tests = [];
+        }
+        addTests (example) {
+            this.tests.push(example)
+        }
+    }
+
+    class TestManager {
+        constructor() {
+        }
+    }
+
     let userAnswer = parseFloat(prompt(`Ваша відповідь`))
 
 
     let mCh = new MultChecker()
-    console.log(MultChecker.getGenerationRandomNum(1, 50))
+    mCh.generationRandomNum(1, 50)
     mCh.generationExample()
     console.log(mCh)
+
+    let aCh = new AddChecker()
+    aCh.generationRandomNum(1, 50)
+    aCh.generationExample()
 
 
 </script>
