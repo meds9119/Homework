@@ -5,14 +5,85 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homework</title>
-    <script>
-    </script>
 </head>
 <body>
 <p>
-
+    Задача 4. Користувач задає місяць навчання учня (перевіряти чи є числом, чи від 1 до 12, чи не канікули) та оцінку
+    (перевіряти чи є числом, чи від 1 до 100). Вивести чи зможе він виправити оцінку (якщо оцінка погана і це не
+    останній
+    місяць у семестрі). Обробку усіх помилок зробити з використанням відповідних класів.
 </p>
+<label>Month</label>
+<input id="inp" type="number" value="">
+
+<label>Score</label>
+<input id="inp2" type="number" value="">
+<button onclick="checkScore()">Score check</button>
+<p id="resCheck"></p>
+
 <script>
+    class IsNotANumberError extends Error {
+        constructor(message) {
+            super()
+            this.message = message
+            this.name = 'IsNotANumberError'
+        }
+    }
+
+    class IsNotARangeError extends Error {
+        constructor(message) {
+            super()
+            this.message = message
+            this.name = 'IsNotARangeError'
+        }
+    }
+
+    class ThisIsHolidayError extends Error {
+        constructor(message) {
+            super()
+            this.message = message
+            this.name = 'ThisIsHolidayError'
+        }
+    }
+
+    class CantFixScore extends Error {
+        constructor(message) {
+            super()
+            this.message = message
+            this.name = 'CantFixScore'
+        }
+    }
+
+    function checkScore() {
+
+        let scoreValue = document.getElementById(`inp2`).value
+        let monthValue = document.getElementById(`inp`).value
+        let resCheck = document.getElementById(`resCheck`)
+
+
+        try {
+            if (isNaN(monthValue)) throw new IsNotANumberError('Введене значення може бути тільки числом' )
+            if (monthValue < 1 || monthValue > 12) throw new IsNotARangeError(`Введене значення може бути лише в діапазоні від 1 до 12`)
+            if (monthValue >= 6 && monthValue <= 8) throw new ThisIsHolidayError('Введене значення некоректне, бо 6, 7, 8 - канікули')
+            if (isNaN(scoreValue)) throw new IsNotANumberError('Введене значення може бути тільки числом')
+            if (scoreValue < 1 || scoreValue > 100) throw new IsNotARangeError(`Введене значення може бути лише в діапазоні від 1 до 100`)
+            if (scoreValue <= 50 && (parseInt(monthValue) === 12 || parseInt(monthValue) === 5)) throw new CantFixScore('Учень не може виправити свою оцінку, бо вже останній місяць у семестрі')
+            resCheck.innerText = 'Помилок не знайдено'
+        } catch (err) {
+            if (err instanceof IsNotANumberError) {
+                resCheck.innerText = err.message
+            } else if (err instanceof IsNotARangeError) {
+                resCheck.innerText = err.message
+            } else if (err instanceof ThisIsHolidayError) {
+                resCheck.innerText = err.message
+            } else if (err instanceof CantFixScore) {
+                resCheck.innerText = err.message
+            } else {
+                resCheck.innerText = err.message
+            }
+        }
+    }
+
 </script>
 
 

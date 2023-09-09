@@ -5,14 +5,116 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homework</title>
-    <script>
-    </script>
 </head>
 <body>
 <p>
+    Розробити Класи
+    House
+    Dog
+    Bird
+    --- властивості ---
+    Координата Х
+    Координата У
+    шлях до зображення
+    інтервал оновлення
+    --- методи ---
+    генерування елемента розмітки
+    оновлення через вказаний інтервал (збільшення або зменшення масштабу (об’єкт не рухається)
 
+
+
+    --- властивості ---
+    Координата Х
+    Координата У
+    шлях до зображення
+    інтервал оновлення
+    --- методи ---
+    генерування елемента розмітки
+    оновлення через вказаний інтервал (випадкове зміщення по горизонталі (зміна координати Х))
+
+
+    --- властивості ---
+    Координата Х
+    Координата У
+    шлях до зображення
+    інтервал оновлення
+    --- методи ---
+    генерування елемента розмітки
+    оновлення через вказаний інтервал (випадкове переміщення у довільному напрямку)
+
+    Подумайте яким має бути спільний клас предок.
 </p>
+<div id="images">
+
+</div>
 <script>
+    class Item {
+        constructor(coordinateX, coordinateY, imgSrc, renewalInterval) {
+            this.coordinateX = coordinateX;
+            this.coordinateY = coordinateY;
+            this.imgSrc = imgSrc;
+            this.renewalInterval = renewalInterval;
+            this.item = document.createElement(`img`)
+        }
+        render () {
+            this.item.src = this.imgSrc
+            this.item.style.position = 'absolute'
+            this.item.style.top = this.coordinateY + `%`
+            this.item.style.right = this.coordinateX + `%`
+            this.item.style.width = `100px`
+
+            document.getElementById(`images`).append(this.item)
+        }
+        randomGeneration(min, max) {
+            return Math.floor(Math.random() * (max - min) + min)
+        }
+    }
+    class Dog extends Item {
+        constructor (coordinateX, coordinateY, imgSrc, renewalInterval) {
+            super (coordinateX, coordinateY, imgSrc, renewalInterval)
+        }
+        run() {
+            setInterval(() => {
+                this.item.style.right = this.randomGeneration(0, 100) + `%`
+            }, this.renewalInterval);
+        }
+    }
+    class Bird extends Item{
+        constructor(coordinateX, coordinateY, imgSrc, renewalInterval) {
+            super(coordinateX, coordinateY, imgSrc, renewalInterval)
+
+        }
+        run() {
+            setInterval(() => {
+                this.item.style.right = this.randomGeneration(0, 100) + `%`
+                this.item.style.top = this.randomGeneration(0, 100) + `%`
+            }, this.renewalInterval);
+        }
+    }
+    class House extends Item{
+        constructor(coordinateX, coordinateY, imgSrc, renewalInterval) {
+            super(coordinateX, coordinateY, imgSrc, renewalInterval)
+
+        }
+        run() {
+            setInterval(() => {
+                this.item.style.width = this.randomGeneration(0, 300) + `px`
+            }, this.renewalInterval);
+        }
+
+    }
+    let dog = new Dog(14, 60, `img/dog.svg`, 2000)
+    dog.render()
+    dog.run()
+
+    let house = new House(23, 67, `img/house.svg`, 700)
+    house.render()
+    house.run()
+
+    let bird = new Bird(29, 45, `img/cute-bird.svg`, 3500)
+    bird.render()
+    bird.run()
+
 </script>
 
 

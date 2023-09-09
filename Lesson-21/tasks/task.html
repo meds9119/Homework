@@ -5,14 +5,102 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homework</title>
-    <script>
-    </script>
 </head>
 <body>
 <p>
+    Задача 1. Створити клас Client
+    Властивості:
+    - ID
+    - ПІБ
+    - Кількість грошей на рахунку
+    Методи:
+    - Додавання грошей
+    - Зняття грошей
+    - ToString
 
+    На основі цього класу створити клас GoldenClient
+    Властивості:
+    - ID
+    - ПІБ
+    - Кількість грошей на рахунку
+    - Ліміт кредитних коштів
+    - Відсоток за використання кредитних коштів
+    Методи:
+    - Додавання грошей
+    - Зняття грошей
+    - Визначення пені за використання кредитних коштів
+    - ToString
 </p>
+<div id="clientData"></div>
+<div id="clientData2"></div>
 <script>
+    class Client {
+        constructor(id, nameClient, debitMoneyAccount) {
+            this.id = id;
+            this.nameClient = nameClient;
+            this.debitMoneyAccount = debitMoneyAccount;
+
+        }
+
+        addMoney(addMoney) {
+            this.debitMoneyAccount += addMoney
+        }
+
+        withdrawalOfMoney(withdrawMoney) {
+            this.debitMoneyAccount -= withdrawMoney
+        }
+
+        toString() {
+            return `ID client: ${this.id}<br>
+                    Name client: ${this.nameClient}<br>
+                    Money on the account: ${this.debitMoneyAccount}<br>`
+
+        }
+
+    }
+
+    class GoldenClient extends Client {
+        constructor(id, nameClient, debitMoneyAccount, creditLimit, percentageForUseCreditMoney) {
+            super(id, nameClient, debitMoneyAccount)
+            this.creditLimit = creditLimit;
+            this.percentageForUseCreditMoney = percentageForUseCreditMoney;
+            this.usedCreditMoney = 0;
+        }
+
+        getMoneyFromCredit(withdrawMoney) {
+            if (withdrawMoney <= this.creditLimit - this.usedCreditMoney
+                && this.debitMoneyAccount - this.accuralPercentageByUseCreditMoney(withdrawMoney) >= 0) {
+                this.usedCreditMoney += withdrawMoney
+                this.accuralPercentageByUseCreditMoney(withdrawMoney)
+                this.debitMoneyAccount -= this.accuralPercentageByUseCreditMoney(withdrawMoney)
+            }
+        }
+
+        accuralPercentageByUseCreditMoney(withdrawMoney) {
+            return withdrawMoney * this.percentageForUseCreditMoney
+        }
+
+
+        toString() {
+            return `ID client: ${this.id}<br>
+                    Name client: ${this.nameClient}<br>
+                    Money on the account: ${this.debitMoneyAccount}<br>
+                    Credit limit: ${this.creditLimit - this.usedCreditMoney}<br>`
+
+        }
+    }
+
+    window.onload = function () {
+        let cl1 = new GoldenClient(1, 'Name Last', 0, 1000, 0.2)
+        cl1.addMoney(200)
+        cl1.withdrawalOfMoney(130)
+        cl1.getMoneyFromCredit(300)
+        document.getElementById('clientData').innerHTML = cl1.toString()
+
+        let cl2 = new Client(2, 'Name Last', 0)
+        cl2.addMoney(300)
+        document.getElementById('clientData2').innerHTML = cl2.toString()
+    }
 </script>
 
 

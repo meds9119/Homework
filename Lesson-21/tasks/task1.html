@@ -5,14 +5,142 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homework</title>
-    <script>
-    </script>
 </head>
 <body>
 <p>
-
+    Задача 2. Створити клас Bank, у якому зберігається масив клієнтів. Виконати такі операції:
+    - Вивести усіх простих клієнтів;
+    - Вивести усіх клієнтів GoldenClient;
+    - Знати сумарну кількість грошей на рахунку;
 </p>
+<div id="client">
+    <h2>
+        Client
+    </h2>
+
+</div>
+<div id="golden_client">
+    <h2>
+        Golden client
+    </h2>
+</div>
+
+    <p> Total sum in accounts: <span id="total"></span></p>
+
 <script>
+    class Client {
+        constructor(id, nameClient, debitMoneyAccount) {
+            this.id = id;
+            this.nameClient = nameClient;
+            this.debitMoneyAccount = debitMoneyAccount;
+
+        }
+
+        addMoney(addMoney) {
+            this.debitMoneyAccount += addMoney
+        }
+
+        withdrawalOfMoney(withdrawMoney) {
+            this.debitMoneyAccount -= withdrawMoney
+        }
+
+        toString() {
+            return `ID client: ${this.id}<br>
+                    Name client: ${this.nameClient}<br>
+                    Money on the account: ${this.debitMoneyAccount}<br>`
+
+        }
+
+    }
+
+    class GoldenClient extends Client {
+        constructor(id, nameClient, debitMoneyAccount, creditLimit, percentageForUseCreditMoney) {
+            super(id, nameClient, debitMoneyAccount)
+            this.creditLimit = creditLimit;
+            this.percentageForUseCreditMoney = percentageForUseCreditMoney;
+            this.usedCreditMoney = 0;
+        }
+
+        getMoneyFromCredit(withdrawMoney) {
+            if (withdrawMoney <= this.creditLimit - this.usedCreditMoney
+                && this.debitMoneyAccount - this.accuralPercentageByUseCreditMoney(withdrawMoney) >= 0) {
+                this.usedCreditMoney += withdrawMoney
+                this.accuralPercentageByUseCreditMoney(withdrawMoney)
+                this.debitMoneyAccount -= this.accuralPercentageByUseCreditMoney(withdrawMoney)
+            }
+        }
+
+        accuralPercentageByUseCreditMoney(withdrawMoney) {
+            return withdrawMoney * this.percentageForUseCreditMoney
+        }
+
+
+        toString() {
+            return `ID client: ${this.id}<br>
+                    Name client: ${this.nameClient}<br>
+                    Money on the account: ${this.debitMoneyAccount}<br>
+                    Credit limit: ${this.creditLimit - this.usedCreditMoney}<br>`
+
+        }
+    }
+    class Bank {
+        constructor() {
+            this.clients = [];
+        }
+        addClient(client) {
+            this.clients.push(client)
+        }
+        getGoldenClients () {
+            for (const client of this.clients) {
+                if (client instanceof GoldenClient) {
+                    document.getElementById(`golden_client`).innerHTML += client.toString()
+                }
+            }
+        }
+        getClients () {
+            for (const client of this.clients) {
+                if (client instanceof Client) {
+                    document.getElementById(`client`).innerHTML += client.toString()
+                }
+
+            }
+        }
+        totalAmountOfMoneyInAccount () {
+            let totalAmountClients = 0
+            for (const client of this.clients) {
+                totalAmountClients += client.debitMoneyAccount
+            }
+            return totalAmountClients
+        }
+    }
+
+
+    window.onload = function () {
+        let cl1 = new GoldenClient(1, 'Name Last', 0, 1000, 0.2)
+        let cl3 = new GoldenClient(3, 'Name Last', 180, 1000, 0.2)
+        let cl4 = new GoldenClient(4, 'Name Last', 2300, 10000, 0.4)
+        cl1.addMoney(200)
+        cl1.withdrawalOfMoney(130)
+        cl1.getMoneyFromCredit(300)
+
+
+        let cl2 = new Client(2, 'Name Last', 0)
+        let cl5 = new Client(5, 'Name Last', 340)
+        let cl6 = new Client(6, 'Name Last', 100)
+        cl2.addMoney(300)
+
+
+        let bn = new Bank()
+        bn.addClient(cl1)
+        bn.addClient(cl2)
+        bn.addClient(cl3)
+        bn.addClient(cl4)
+        bn.addClient(cl5)
+        bn.addClient(cl6)
+        bn.getGoldenClients()
+        bn.getClients()
+        document.getElementById('total').innerHTML = bn.totalAmountOfMoneyInAccount().toString()
+    }
 </script>
 
 
