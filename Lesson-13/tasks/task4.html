@@ -7,40 +7,37 @@
     <title>Homework</title>
 </head>
 <body>
-    <p>
-        Задача 5. Тренажер додавання. Кожні 10 секунд користувачу задають випадковий приклад з додавання двох цифр і робиться перевірка.
+<p>
+    Задача 5. Тренажер додавання. Кожні 10 секунд користувачу задають випадковий приклад з додавання двох цифр і
+    робиться перевірка.
 
-    </p>
-    <script>
+</p>
+<script>
 
-        const minValue = 1
-        const maxValue = 10
+    const minValue = 1
+    const maxValue = 10
 
-       // Функція для рандомного прикладу: 
+    // Функція для рандомного прикладу:
 
-       function getRandomTask (minValue, maxValue) {
-        let randomNum1 = minValue + Math.floor(Math.random() * (maxValue - minValue +1))
-        let randomNum2 = minValue + Math.floor(Math.random() * (maxValue - minValue +1))
+    function getRandomTask(minValue, maxValue) {
+        let randomNum1 = minValue + Math.floor(Math.random() * (maxValue - minValue + 1))
+        let randomNum2 = minValue + Math.floor(Math.random() * (maxValue - minValue + 1))
         let sum = randomNum1 + randomNum2
         let userAnswer = parseInt(prompt(`${randomNum1} + ${randomNum2} = ? `))
-        if (sum === userAnswer) alert (`Вірно!`)
-        else alert (`Невірно! Правильна відповідь ${sum}`)
+        if (sum === userAnswer) alert(`Вірно!`)
+        else alert(`Невірно! Правильна відповідь ${sum}`)
 
-       }
-
-       
-       let alertInterval = setInterval(() => getRandomTask (minValue, maxValue), 10000)
-       setTimeout(() => clearInterval(getRandomTask), 30000)
+    }
 
 
+    let alertInterval = setInterval(() => getRandomTask(minValue, maxValue), 10000)
+    setTimeout(() => clearInterval(getRandomTask), 30000)
 
-      
+</script>
+<script>
 
-    </script>
-    <script>
-    
 
-    </script>
+</script>
 
 </body>
 </html>

@@ -7,28 +7,27 @@
     <title>Document</title>
 </head>
 <br>
-    <h1>Задача 8</h1> 
-    <p>
-        Користувач загадує число. За 3 спроби комп’ютер намагається вгадати число користувача (використати confirm).
-    </p>
-       
-    <script>
-     
-       const minNum = 1, maxNum = 100
+<h1>Задача 8</h1>
+<p>
+    Користувач загадує число. За 3 спроби комп’ютер намагається вгадати число користувача (використати confirm).
+</p>
 
-        for (let i = 0; i < 3; i++) {
+<script>
+
+    const minNum = 1, maxNum = 100
+
+    for (let i = 0; i < 3; i++) {
         let compRandomNum = Math.floor(Math.random() * (maxNum - minNum)) + minNum;
-        if (confirm(`Це число ${compRandomNum}?`)){
+        if (confirm(`Це число ${compRandomNum}?`)) {
             alert(`Комп'ютер вгадав, це число ${compRandomNum}!`);
             break;
-        }
-        else {
+        } else {
 
         }
-            alert(`Комп'ютер не вгадав.`)
-       }
-       
-    </script>
+        alert(`Комп'ютер не вгадав.`)
+    }
+
+</script>
 
 </body>
 </html>

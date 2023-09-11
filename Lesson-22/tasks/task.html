@@ -5,14 +5,256 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homework</title>
-    <script>
-    </script>
 </head>
 <body>
 <p>
+    Задача 1. Визначити привітання у залежності від часу доби (Доброго дня, Доброго ранку, Доброго вечора):
+    <span id="task1"></span><br>
+    Задача 2. Вивести дату у форматі “місяць – рік – вихідний/робочий”:
+    <span id="task2"></span><br>
+    Задача 3. Визначити поточну пору року:
+    <span id="task3"></span><br>
+    Задача 4. Вивести назву дня:
+    <span id="task4"></span><br>
+    Задача 5. Користувач вводить дату народження. Визначити, скільки йому повних років.
+    <label>
+        <input id="inp" type="date" value="">
+    </label>
 
+    <button id="btn" onclick="getFullYear()">Go</button>
+
+    <span id="task5"></span><br>
+    Задача 6. Користувач іде у відпустку на 56 днів. Визначити дату на момент його повернення.
+    <label>
+        <input id="inp1" type="date" value="">
+    </label>
+
+    <button id="btn1" onclick="getReturnDate()">Go</button>
+    <span id="task6"></span><br>
+    Задача 7. Користувач бере авто на вказану кількість годин. Визначити кінцевий час повернення.
+    <label>
+        <input id="inp2" type="number" value="">
+    </label>
+
+    <button id="btn2" onclick="getReturnCarTime()">Go</button>
+    <span id="task7"></span><br>
+    Задача 8. Задаємо користувачу задачу з додавання двох чисел. Визначити скільки секунд було використано для
+    розв'язку задачі.
+    <button id="btn6" onclick="getExample ()">Go</button>
+    <span id="task8"></span><br>
+    Задача 9. Дано дата виробництва йогурта (вводимо рік, місяць, день) та кількість днів придатності. Визначити чи є
+    він придатним на даний момент.
+    <label>
+        <input id="inp4" type="number" value="">
+    </label>
+    <label>
+        <input id="inp5" type="date" value="">
+    </label>
+
+    <button id="btn4" onclick="expirationDate()">Go</button>
+    <span id="task9"></span><br>
+
+    Задача 10. Сформувати масив з 1000 елементів від 1 до 800. Порівняти час сортування бульбашкою і вставкою.
+    <button id="btn5" onclick="sortDataCheck()">Go</button>
+    <span id="task10"></span><br>
 </p>
+
 <script>
+    "use strict"
+    // Задача 1. Визначити привітання у залежності від часу доби (Доброго дня, Доброго ранку, Доброго вечора)
+
+    let date = new Date()
+    if (date.getHours() >= 6 && date.getHours() < 12) {
+        document.getElementById(`task1`).innerText = `Доброго ранку!`
+    } else if (date.getHours() >= 12 && date.getHours() < 18) {
+        document.getElementById(`task1`).innerText = `Доброго дня!`
+    } else if (date.getHours() >= 18 && date.getHours() < 23) {
+        document.getElementById(`task1`).innerText = `Доброго вечора!`
+    } else {
+        document.getElementById(`task1`).innerText = `Доброї ночі!`
+    }
+
+    // Задача 2. Вивести дату у форматі “місяць – рік – вихідний/робочий”
+    let date1 = new Date()
+    if (date1.getDay() >= 5 && date1.getDay() <= 7) {
+        document.getElementById(`task2`).innerText = `Дата: ${date1.getMonth() + 1} - ${date1.getFullYear()} - вихідний день`
+    } else {
+        document.getElementById(`task2`).innerText = `Дата: ${date1.getMonth() + 1} - ${date1.getFullYear()} - робочий день`
+    }
+
+    // Задача 3. Визначити поточну пору року
+    let date2 = new Date()
+    switch (date2.getMonth) {
+        case 1:
+        case 2:
+        case 12:
+            document.getElementById('task3').innerText = `зима`
+            break;
+
+        case 3:
+        case 4:
+        case 5:
+            document.getElementById('task3').innerText = `весна`
+            break;
+
+        case 6:
+        case 7:
+        case 8:
+            document.getElementById('task3').innerText = `літо`
+            break;
+
+        default:
+            document.getElementById('task3').innerText = `осінь`
+            break;
+    }
+    // Задача 4. Вивести назву дня
+    let date4 = new Date()
+    let options = {weekday: `long`}
+    document.getElementById(`task4`).innerText = date4.toLocaleDateString(`uk-UA`, options)
+
+    // Задача 5. Користувач вводить дату народження. Визначити, скільки йому повних років.
+    function age(date5, dateOfBirth) {
+        return Math.floor((date5.getTime() - dateOfBirth.getTime()) / (1000 * 60 * 60 * 24) / 365)
+    }
+
+    function getFullYear() {
+        let date5 = new Date()
+        let dateOfBirth = new Date(document.getElementById(`inp`).value)
+
+        let res = age(date5, dateOfBirth)
+        document.getElementById(`task5`).innerText = res.toString()
+    }
+
+    // Задача 6. Користувач іде у відпустку на 56 днів. Визначити дату на момент його повернення.
+    const holidaysCountDay = 56
+
+    function getReturnDate() {
+        let holidaysStartDate = new Date(document.getElementById(`inp1`).value)
+        holidaysStartDate.setDate(holidaysStartDate.getDate() + holidaysCountDay)
+
+        document.getElementById(`task6`).innerText = holidaysStartDate.toLocaleDateString(`uk-UA`)
+
+    }
+
+    // Задача 7. Користувач бере авто на вказану кількість годин. Визначити кінцевий час повернення.
+    function getReturnCarTime() {
+        const carRent = document.getElementById(`inp2`).value
+        let date7 = new Date()
+        let returnCarTime = new Date(date7.getTime() + carRent * 60 * 60 * 1000)
+
+        //let returnDate = returnCarTime.toLocaleDateString()
+        let returnHour = returnCarTime.getHours()
+        let returnMinute = returnCarTime.getMinutes()
+
+        document.getElementById(`task7`).innerText = `Час повернення:` + returnHour + `:` + returnMinute
+    }
+
+    // Задача 8. Задаємо користувачу задачу з додавання двох чисел. Визначити скільки секунд було використано для
+    // розв'язку задачі.
+    function getRandom(maxValue, minValue) {
+        return Math.floor(Math.random() * (maxValue - minValue + 1))
+    }
+
+    function getExample() {
+        let timeStart = new Date()
+        let randomNum1 = getRandom(15, 1)
+        let randomNum2 = getRandom(15, 1)
+        let sum = randomNum1 + randomNum2
+
+        let userAnswer = parseInt(prompt(`${randomNum1} + ${randomNum2} = ?`))
+        if (sum === userAnswer) document.getElementById('task8').innerText = `Вірно!`
+        else document.getElementById(`task8`).innerText = `Невірно! Правильна відповідь ${sum}.`
+
+        let timeEnd = new Date()
+        let timeUsedForResolution = (timeEnd - timeStart) / 1000
+        document.getElementById(`task8`).innerText = `Час використанний на розв'язок задачі: ${timeUsedForResolution}`
+    }
+
+    // Задача 9. Дано дата виробництва йогурта (вводимо рік, місяць, день) та кількість днів придатності. Визначити чи є
+    // він придатним на даний момент.
+    function expirationDate() {
+        const validityCount = document.getElementById(`inp4`).value
+        let date9 = new Date()
+        let productionDate = new Date(document.getElementById(`inp5`).value)
+        let expirationDate = (date9 - productionDate) / (1000 * 60 * 60 * 24)
+        if (expirationDate <= validityCount) {
+            document.getElementById(`task9`).innerText = `Йогурт придатний до споживання.`
+        } else {
+            document.getElementById(`task9`).innerText = `Йогурт не придатний до споживання.`
+        }
+    }
+
+
+    // Задача 10. Сформувати масив з 1000 елементів від 1 до 800. Порівняти час сортування бульбашкою і вставкою.
+    function getRandomNumber(length, min, max) {
+        let array = []
+        for (let i = 0; i < length; i++) {
+            let random = min + Math.floor(Math.random() * (max - min + 1))
+            array.push(random)
+
+        }
+        return array
+    }
+
+    function getBubbleSortArray(arrayForBubble) {
+        let counter = 0
+        let changed
+        do {
+            changed = false
+            for (let i = 1; i < arrayForBubble.length; i++) {
+                if (arrayForBubble[i - 1] > arrayForBubble[i]) {
+                    let tmp = arrayForBubble[i - 1];
+                    arrayForBubble[i - 1] = arrayForBubble[i]
+                    arrayForBubble[i] = tmp
+                    changed = true
+                    counter++
+                }
+
+            }
+        }
+        while (changed)
+        return counter
+    }
+
+    function getInsertSortArray(arrayForInsert) {
+        let counter = 0
+        for (let k = 1; k < arrayForInsert.length; k++) {
+            const currentElement = arrayForInsert[k]
+            let i = k - 1
+            while (i >= 0 && arrayForInsert[i] > currentElement) {
+                arrayForInsert[i + 1] = arrayForInsert[i]
+                i = i - 1
+            }
+            arrayForInsert[i + 1] = currentElement
+            counter++
+
+        }
+        return counter
+    }
+
+    function sortDataCheck() {
+        let arrayForBubble = getRandomNumber(1000, 1, 800)
+        let arrayForInsert = JSON.parse(JSON.stringify(arrayForBubble))
+
+        let date10StartBubble = new Date()
+        arrayForBubble = getBubbleSortArray(arrayForBubble)
+        let date10EndBubble = new Date()
+
+        let date10StartInsert = new Date()
+        arrayForInsert = getInsertSortArray(arrayForInsert)
+        let date10EndInsert = new Date()
+
+        let timeSortBubble = date10EndBubble.getTime() - date10StartBubble.getTime()
+        let timeSortInsert = date10EndInsert.getTime() - date10StartInsert.getTime()
+
+        if (timeSortBubble > timeSortInsert) {
+            document.getElementById(`task10`).innerText = `Сортування включенням швидше спрацювало`
+        } else {
+            document.getElementById(`task10`).innerText = `Сортування бульбашкою швидше спрацювало`
+        }
+    }
+
+
 </script>
 
 
