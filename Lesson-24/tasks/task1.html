@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+</head>
+<body>
+<p>
+    Задача 6. Дано масив книг (назва, рік видання, автор). Підрахувати кількість книг для кожного автора.
+</p>
+<script>
+    class Book {
+        constructor(title, yearOfPublication, author) {
+            this.title = title;
+            this.yearOfPublication = yearOfPublication;
+            this.author = author;
+
+        }
+
+    }
+
+    let book1 = new Book(`Катерина`, 1840, `Тарас Шевченко`)
+    let book2 = new Book(`Федько-халамидник`, 1912, `Володимир Винниченко`)
+    let book3 = new Book(`Кобзар`, 1841, `Тарас Шевченко`)
+    let book4 = new Book(`Хіба ревуть воли`, 1880, `Панас Мирний`)
+    let book5 = new Book(`Кайдашева сім'я`, 1879, `Іван Нечуй-Левицький`)
+    let book6 = new Book(`Брехня`, 1910, `Володимир Винниченко`)
+
+    let booksArr = []
+    booksArr.push(book1, book2, book3, book4, book5, book6)
+    let map = new Map()
+
+    for (const book of booksArr) {
+        let bookCount = map.get(book.author) ?? 0
+        map.set(book.author, bookCount + 1)
+    }
+    console.log(map)
+</script>
+
+
+</body>
+</html>

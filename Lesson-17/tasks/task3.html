@@ -34,6 +34,7 @@
             this.dateOfBirth = dateOfBirth;
             this.description = description;
         }
+
         toString() {
             return `authors date of birth: ${this.dateOfBirth} year, short description: ${this.description}`
         }
@@ -118,6 +119,7 @@
             return `Personal library: <br> ${this.books}`
         }
     }
+
     // Вводимо самі книги до окремого класу Books
     let bk = new Books(`Kobzar`, `poetry`)
     let bk1 = new Books(`Marusya Churay`, `historical novel`)

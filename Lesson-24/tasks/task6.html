@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+</head>
+<body id="body">
+<p>
+    Задача 11. Користувач може змінювати колір фону, що вибирає користувач з використанням. Зберігати цей колір і
+    відновлювати
+    при наступному відкритті. Також зберігати і відображати кількість змін протягом одного сеансу.
+    <label>
+        <input id="inputColor" type="color" onchange="changeColor()">
+    </label>
+    <span id="count">
+
+</span>
+
+</p>
+<script>
+    window.onload = function () {
+        let color = localStorage.getItem(`backgroundColor`)
+        if (color) {
+            let body = document.getElementById(`body`)
+            body.style.backgroundColor = color
+            document.getElementById(`inputColor`).value = color
+        }
+        let countChanges = localStorage.getItem(`countChanges`)
+        if (countChanges) {
+            document.getElementById(`count`).innerText = `Кількість змін ${countChanges}`
+        }
+
+    }
+
+
+    function changeColor() {
+        let countChanges = localStorage.getItem(`countChanges`)
+        if (!countChanges) {
+            countChanges = 0
+        }
+        countChanges++
+        localStorage.setItem(`countChanges`, countChanges)
+        document.getElementById(`count`).innerText = `Кількість змін ${countChanges}`
+
+
+        let color = document.getElementById(`inputColor`).value
+        let body = document.getElementById(`body`)
+        body.style.backgroundColor = color
+        localStorage.setItem(`backgroundColor`, color)
+        console.log(color)
+    }
+
+
+</script>
+
+</body>
+</html>

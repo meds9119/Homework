@@ -10,9 +10,79 @@
 </head>
 <body>
 <p>
-
+    Задача 10. Сформувати масив з 1000 елементів від 1 до 800. Порівняти час сортування бульбашкою і вставкою.
+    <button id="btn5" onclick="sortDataCheck()">Go</button>
+    <span id="task10"></span><br>
 </p>
 <script>
+    // Задача 10. Сформувати масив з 1000 елементів від 1 до 800. Порівняти час сортування бульбашкою і вставкою.
+    function getRandomNumber(length, min, max) {
+        let array = []
+        for (let i = 0; i < length; i++) {
+            let random = min + Math.floor(Math.random() * (max - min + 1))
+            array.push(random)
+
+        }
+        return array
+    }
+
+    function getBubbleSortArray(arrayForBubble) {
+        let counter = 0
+        let changed
+        do {
+            changed = false
+            for (let i = 1; i < arrayForBubble.length; i++) {
+                if (arrayForBubble[i - 1] > arrayForBubble[i]) {
+                    let tmp = arrayForBubble[i - 1];
+                    arrayForBubble[i - 1] = arrayForBubble[i]
+                    arrayForBubble[i] = tmp
+                    changed = true
+                    counter++
+                }
+
+            }
+        }
+        while (changed)
+        return counter
+    }
+
+    function getInsertSortArray(arrayForInsert) {
+        let counter = 0
+        for (let k = 1; k < arrayForInsert.length; k++) {
+            const currentElement = arrayForInsert[k]
+            let i = k - 1
+            while (i >= 0 && arrayForInsert[i] > currentElement) {
+                arrayForInsert[i + 1] = arrayForInsert[i]
+                i = i - 1
+            }
+            arrayForInsert[i + 1] = currentElement
+            counter++
+
+        }
+        return counter
+    }
+
+    function sortDataCheck() {
+        let arrayForBubble = getRandomNumber(1000, 1, 800)
+        let arrayForInsert = JSON.parse(JSON.stringify(arrayForBubble))
+
+        let date10StartBubble = new Date()
+        arrayForBubble = getBubbleSortArray(arrayForBubble)
+        let date10EndBubble = new Date()
+
+        let date10StartInsert = new Date()
+        arrayForInsert = getInsertSortArray(arrayForInsert)
+        let date10EndInsert = new Date()
+
+        let timeSortBubble = date10EndBubble.getTime() - date10StartBubble.getTime()
+        let timeSortInsert = date10EndInsert.getTime() - date10StartInsert.getTime()
+
+        if (timeSortBubble > timeSortInsert) {
+            document.getElementById(`task10`).innerText = `Сортування включенням швидше спрацювало`
+        } else {
+            document.getElementById(`task10`).innerText = `Сортування бульбашкою швидше спрацювало`
+        }
+    }
 </script>
 
 

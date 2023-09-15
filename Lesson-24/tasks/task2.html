@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+</head>
+<body>
+<p>
+    Задача 7. Дано інформацію про відвідувачів деякого сайту (для кожного відвідувача зберігається логін).
+    Підрахувати для кожного клієнта кількість відвідувань.
+</p>
+<script>
+    class Visitor {
+        constructor(login, visitDate) {
+            this.login = login;
+            this.visitDate = visitDate;
+
+        }
+
+    }
+
+    let vis1 = new Visitor(`vis012`, `24-08-2023`)
+    let vis2 = new Visitor(`siv412`, `22-08-2023`)
+    let vis3 = new Visitor(`sunShine21`, `24-08-2023`)
+    let vis4 = new Visitor(`siv412`, `24-07-2023`)
+    let vis5 = new Visitor(`sunShine21`, `24-08-2023`)
+    let vis6 = new Visitor(`voo02oo`, `24-07-2023`)
+
+    let visitorArr = []
+    visitorArr.push(vis1, vis2, vis3, vis4, vis5, vis6)
+    let map = new Map()
+
+    for (const login of visitorArr) {
+        let loginCount = map.get(login.login) ?? 0
+        map.set(login.login, loginCount + 1)
+    }
+    console.log(map)
+
+
+</script>
+
+
+</body>
+</html>

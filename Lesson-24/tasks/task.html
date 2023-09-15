@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+</head>
+<body>
+<p>
+    Задача 5. Дано список з віком учнів. Підрахувати скільки разів кожне значення зустрічається у списку і максимальне.
+</p>
+<script>
+    function getRandomNumber(length, min, max) {
+        let array = []
+        for (let i = 0; i < length; i++) {
+            let random = Math.floor(Math.random() * (max - min + 1))
+            array.push(random)
+
+        }
+        return array
+    }
+
+    let agesArr = getRandomNumber(15, 6, 18)
+    let map = new Map()
+
+    for (const age of agesArr) {
+        let agesCount = map.get(age) ?? 0
+        map.set(age, agesCount + 1)
+    }
+    let maxValue = Math.max(...agesArr)
+    console.log(map)
+    console.log(maxValue)
+</script>
+
+
+</body>
+</html>

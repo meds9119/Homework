@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+</head>
+<body>
+<p>
+    Задача 8. Дано масив студентів (піб, курс, факультет).
+    Підрахувати кількість різних факультетів, та кількість студентів кожного з курсів.
+</p>
+<script>
+    class Student {
+        constructor(name, course, faculty) {
+            this.name = name;
+            this.course = course;
+            this.faculty = faculty;
+        }
+    }
+
+    let map = new Map()
+    let mapStudents = new Map()
+    let student = new Student(`Студент-1`, 2, `інформатика`)
+    let student1 = new Student(`Студент-2`, 2, `математика`)
+    let student2 = new Student(`Студент-3`, 1, `інформаційні технології`)
+    let student3 = new Student(`Студент-4`, 4, `інформатика`)
+    let student4 = new Student(`Студент-5`, 2, `інформатика`)
+    let student5 = new Student(`Студент-6`, 4, `математика`)
+    let student6 = new Student(`Студент-7`, 2, `програмне забезпечення`)
+    let student7 = new Student(`Студент-8`, 1, `інформатика`)
+
+    let studentsArr = []
+    studentsArr.push(student, student1, student2, student3, student4, student5, student6, student7)
+
+    for (const student of studentsArr) {
+        let facultyCount = map.get(student.faculty) ?? 0
+        map.set(student.faculty, facultyCount + 1)
+    }
+
+    for (const student of studentsArr) {
+        let facultyStudentCount = mapStudents.get(student.course) ?? 0
+        mapStudents.set(student.course, facultyStudentCount + 1)
+    }
+
+    console.log(map.size)
+    console.log(mapStudents)
+
+</script>
+
+
+</body>
+</html>
